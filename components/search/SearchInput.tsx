@@ -100,7 +100,8 @@ export default function SearchInput({
         autocomplete="off"
       />
 
-      {/* <button
+      {
+        /* <button
         type="button"
         aria-label="Clean search"
         class="focus:outline-none"
@@ -114,8 +115,9 @@ export default function SearchInput({
         }}
       >
         <Text variant="caption" tone="default">limpar</Text>
-      </button> */}
-    
+      </button> */
+      }
+
       <Button
         variant="icon"
         aria-label="Search"

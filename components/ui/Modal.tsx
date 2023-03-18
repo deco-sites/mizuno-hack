@@ -75,9 +75,7 @@ const Modal = ({
       >
         {isTitleText
           ? (
-            <header
-              class="flex px-4 justify-between items-center pb-6 border-b-1 border-default"
-            >
+            <header class="flex px-4 justify-between items-center pb-6 border-b-1 border-default">
               <h1>
                 <Text variant="heading-2">{title}</Text>
               </h1>

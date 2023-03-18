@@ -38,7 +38,7 @@ const options: Omit<Options, "selfURL"> = {
         secondary: "#009bdb",
 
         gray: "#e6e5e5",
-        'light-gray': "#ebebeb",
+        "light-gray": "#ebebeb",
       },
       fontFamily: {
         "sans": ["Roboto", "sans-serif"],

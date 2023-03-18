@@ -69,7 +69,11 @@ function Navbar({ items, searchbar, logo }: NavbarProps) {
       {/* Desktop Version */}
       <div class="hidden lg:flex h-[66px] bg-white border-b-1 border-default w-full">
         <Container class="flex flex-row justify-between items-center w-full">
-          <div class={`flex-none ${desktopLogo?.width ? `w-[${desktopLogo?.width}px]` : ''}`}>
+          <div
+            class={`flex-none ${
+              desktopLogo?.width ? `w-[${desktopLogo?.width}px]` : ""
+            }`}
+          >
             <a href="/" aria-label="Store logo" class="absolute top-0">
               {/* <Icon id="Logo" width={126} height={16} /> */}
               {desktopLogo && (
@@ -95,7 +99,14 @@ function Navbar({ items, searchbar, logo }: NavbarProps) {
               aria-label="Favoritos"
               class="text-black ml-3 p-0"
             >
-              <Icon id="Heart" width={32} height={32}  fill="white" stroke="black" strokeWidth={2.5}  />
+              <Icon
+                id="Heart"
+                width={32}
+                height={32}
+                fill="white"
+                stroke="black"
+                strokeWidth={2.5}
+              />
             </Button>
             <Button
               as="a"
@@ -104,7 +115,7 @@ function Navbar({ items, searchbar, logo }: NavbarProps) {
               aria-label="Log in"
               class="text-black p-0"
             >
-              <Icon id="User" width={28} height={28}  />
+              <Icon id="User" width={28} height={28} />
             </Button>
             <HeaderButton variant="cart" />
           </div>

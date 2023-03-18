@@ -51,7 +51,7 @@ export interface Props {
    * @description vtex config used for search autocompletion;
    */
   configVTEX?: LoaderReturnType<ClientConfigVTEX>;
-  
+
   /**
    * @description Logo
    */
@@ -66,7 +66,7 @@ function Header(
     navItems = [],
     suggestions,
     configVTEX,
-    logo
+    logo,
   }: Props,
 ) {
   const searchbar = { ..._searchbar, products, suggestions, configVTEX };

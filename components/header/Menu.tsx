@@ -25,7 +25,9 @@ function MenuItem({ item, level = 0 }: { item: INavItem; level?: number }) {
   return (
     <li>
       <div
-        class={`transition-colors duration-300 overflow-hidden ${level === 0 ? `${open.value ? "bg-light-gray" : "bg-white"} px-4` : ""}`}
+        class={`transition-colors duration-300 overflow-hidden ${
+          level === 0 ? `${open.value ? "bg-light-gray" : "bg-white"} px-4` : ""
+        }`}
       >
         <div
           class={`flex justify-between items-center w-full py-2 text-md font-bold ${
@@ -64,10 +66,22 @@ function MenuItem({ item, level = 0 }: { item: INavItem; level?: number }) {
         </div>
 
         {hasChildren && (
-          <ul class={`flex-col flex transition-all duration-300 ${open.value === true ? "max-h-[400px]" : "max-h-0"}`}>
+          <ul
+            class={`flex-col flex transition-all duration-300 ${
+              open.value === true ? "max-h-[400px]" : "max-h-0"
+            }`}
+          >
             <li>
-              <a href={item.href} class={`w-full py-1 inline-block ${level > 0 ? `pl-${level * 3}` : ""}`}>
-                <Text class="underline text-secondary text-base font-medium" variant="caption">
+              <a
+                href={item.href}
+                class={`w-full py-1 inline-block ${
+                  level > 0 ? `pl-${level * 3}` : ""
+                }`}
+              >
+                <Text
+                  class="underline text-secondary text-base font-medium"
+                  variant="caption"
+                >
                   Ver todos
                 </Text>
               </a>
