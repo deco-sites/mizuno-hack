@@ -1,3 +1,4 @@
+import Image from "deco-sites/std/components/Image.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Title from "$store/components/ui/Title.tsx";
 
@@ -18,12 +19,12 @@ function Item({ image, alt, url }: Product) {
       class="relative lg:hover:opacity-80 lg:transition-opacity lg:duration-200"
       href={url}
     >
-      <img
+      <Image
         class="w-full"
         src={image}
         alt={alt}
-        width={300}
-        height={300}
+        width={200}
+        height={200}
       />
 
       <span class="w-[calc(100%-38%)] h-8 bg-primary text-white text-2xs font-bold uppercase flex justify-center items-center absolute top-full left-1/2 -translate-1/2 md:h-10 md:text-xs">
