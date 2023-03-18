@@ -231,49 +231,37 @@ const manifest: DecoManifest = {
                   "title": "Desktop",
                   "description": "desktop otimized image",
                 },
-                "mobile": {
+                "tablet": {
                   "format": "image-uri",
                   "type": "string",
-                  "title": "Mobile",
-                  "description": "mobile otimized image",
+                  "title": "Tablet",
+                  "description": "tablet otimized image",
+                },
+                "phone": {
+                  "format": "image-uri",
+                  "type": "string",
+                  "title": "Phone",
+                  "description": "phone otimized image",
                 },
                 "alt": {
                   "type": "string",
                   "title": "Alt",
                   "description": "Image's alt text",
                 },
-                "action": {
-                  "title": "Action",
-                  "type": "object",
-                  "properties": {
-                    "href": {
-                      "type": "string",
-                      "title": "Href",
-                    },
-                    "title": {
-                      "type": "string",
-                      "title": "Title",
-                    },
-                    "subTitle": {
-                      "type": "string",
-                      "title": "Sub Title",
-                    },
-                    "label": {
-                      "type": "string",
-                      "title": "Label",
-                    },
-                  },
-                  "required": [
-                    "href",
-                    "title",
-                    "subTitle",
-                    "label",
+                "href": {
+                  "type": [
+                    "string",
+                    "null",
                   ],
+                  "title": "Href",
+                  "description":
+                    "when user clicks on the image, go to this link",
                 },
               },
               "required": [
                 "desktop",
-                "mobile",
+                "tablet",
+                "phone",
                 "alt",
               ],
             },

@@ -36,6 +36,10 @@ const options: Omit<Options, "selfURL"> = {
       colors: {
         primary: "#001489",
         secondary: "#009bdb",
+
+        gray: {
+          100: "#F9F9F8",
+        },
       },
       fontFamily: {
         "sans": ["Roboto", "sans-serif"],
@@ -51,6 +55,9 @@ const options: Omit<Options, "selfURL"> = {
         "2xl": "2rem",
         "3xl": "2.5rem",
         "4xl": "3rem",
+      },
+      outline: {
+        none: ["none"],
       },
       // "fontFamily": {
       //   "roboto": ["Roboto", "sans-serif"],
@@ -143,6 +150,7 @@ const options: Omit<Options, "selfURL"> = {
       lg: "1056px",
       xl: "1280px",
       "2xl": "1536px",
+      "3xl": "1920px",
     },
   },
   preflight: (preflight) => ({

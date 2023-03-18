@@ -1,30 +1,22 @@
-import Text from "$store/components/ui/Text.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Button from "$store/components/ui/Button.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderControllerJS from "$store/islands/SliderJS.tsx";
 import { Picture, Source } from "deco-sites/std/components/Picture.tsx";
 import { useId } from "preact/hooks";
-import { animation, keyframes, tw } from "twind/css";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
 export interface Banner {
   /** @description desktop otimized image */
   desktop: LiveImage;
-  /** @description mobile otimized image */
-  mobile: LiveImage;
+  /** @description tablet otimized image */
+  tablet: LiveImage;
+  /** @description phone otimized image */
+  phone: LiveImage;
   /** @description Image's alt text */
   alt: string;
-  action?: {
-    /** @description when user clicks on the image, go to this link */
-    href: string;
-    /** @description Image text title */
-    title: string;
-    /** @description Image text subtitle */
-    subTitle: string;
-    /** @description Button label */
-    label: string;
-  };
+  /** @description when user clicks on the image, go to this link */
+  href?: string;
 }
 
 export interface Props {
@@ -43,56 +35,61 @@ export interface Props {
 function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
   const {
     alt,
-    mobile,
     desktop,
-    action,
+    tablet,
+    phone,
+    href,
   } = image;
 
   return (
-    <div class="relative h-[600px] min-w-[100vw] overflow-y-hidden">
-      <a href={action?.href ?? "#"} aria-label={action?.label}>
+    <div class="min-w-[100vw] overflow-y-hidden relative">
+      <a href={href ?? "#"}>
         <Picture class="w-full" preload={lcp}>
           <Source
-            media="(max-width: 767px)"
+            media="(max-width: 639px)"
             fetchPriority={lcp ? "high" : "auto"}
-            src={mobile}
-            width={360}
-            height={600}
+            src={phone}
+            width={256}
+            height={320}
           />
+
           <Source
-            media="(min-width: 768px)"
+            media="(max-width: 1023px)"
+            fetchPriority={lcp ? "high" : "auto"}
+            src={tablet}
+            width={960}
+            height={350}
+          />
+
+          <Source
+            media="(min-width: 1024px)"
             fetchPriority={lcp ? "high" : "auto"}
             src={desktop}
-            width={1440}
-            height={600}
+            width={1370}
+            height={500}
           />
+
+          <Source
+            media="(min-width: 1920px)"
+            fetchPriority={lcp ? "high" : "auto"}
+            src={desktop}
+            width={1920}
+            height={700}
+          />
+
           <img
-            class="object-cover w-full sm:h-full"
+            class="w-full object-cover sm:max-h-[700px] 3xl:max-h-[1000px]"
             loading={lcp ? "eager" : "lazy"}
             src={desktop}
             alt={alt}
           />
         </Picture>
-        {action && (
-          <div
-            class="absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 bg-hover-inverse p-4 rounded"
-            style={{ backdropFilter: "blur(8px)" }}
-          >
-            <Text variant="heading-1" tone="default-inverse">
-              {action.title}
-            </Text>
-            <Text variant="heading-3" tone="default-inverse">
-              {action.subTitle}
-            </Text>
-            <Button variant="secondary">{action.label}</Button>
-          </div>
-        )}
       </a>
     </div>
   );
 }
 
-function Dots({ images, interval = 0 }: Props) {
+function Dots({ images }: Props) {
   return (
     <>
       <style
@@ -106,34 +103,15 @@ function Dots({ images, interval = 0 }: Props) {
         }}
       >
       </style>
-      <ol class="flex items-center justify-center col-span-full gap-4 z-10 row-start-4">
+
+      <ol class="py-4 flex justify-center col-span-full gap-3 sm:hidden">
         {images?.map((_, index) => (
-          <li class="h-full">
+          <li class="leading-[0]">
             <button
+              class="w-3 h-3 bg-black opacity-75 rounded-full focus:outline-none disabled:opacity-100"
               data-dot={index}
               aria-label={`go to slider item ${index}`}
-              class="h-full rounded focus:outline-none group"
-            >
-              <div
-                class={tw`group-disabled:${
-                  animation(
-                    `${interval}s ease-out 1 forwards`,
-                    keyframes`
-                      from: {
-                        --dot-progress: 0%;
-                      }
-                      to {
-                        --dot-progress: 100%;
-                      }
-                    `,
-                  )
-                } w-16 sm:w-20 h-0.5`}
-                style={{
-                  background:
-                    "linear-gradient(to right, #FFFFFF var(--dot-progress), rgba(255, 255, 255, 0.4) var(--dot-progress))",
-                }}
-              />
-            </button>
+            />
           </li>
         ))}
       </ol>
@@ -144,31 +122,28 @@ function Dots({ images, interval = 0 }: Props) {
 function Controls() {
   return (
     <>
-      <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
+      <div class="hidden sm:opacity-40 sm:flex sm:items-center sm:justify-center sm:col-start-1 sm:row-start-2 sm:z-10 sm:hover:opacity-100">
         <Button
-          class="h-12 w-12"
-          variant="icon"
+          variant="slider"
           data-slide="prev"
           aria-label="Previous item"
         >
           <Icon
-            class="text-default-inverse"
-            size={20}
+            size={30}
             id="ChevronLeft"
             strokeWidth={3}
           />
         </Button>
       </div>
-      <div class="flex items-center justify-center z-10 col-start-3 row-start-2">
+
+      <div class="hidden sm:opacity-40 sm:flex sm:items-center sm:justify-center sm:col-start-3 sm:row-start-2 sm:z-10 sm:hover:opacity-100">
         <Button
-          class="h-12 w-12"
-          variant="icon"
+          variant="slider"
           data-slide="next"
           aria-label="Next item"
         >
           <Icon
-            class="text-default-inverse"
-            size={20}
+            size={30}
             id="ChevronRight"
             strokeWidth={3}
           />
@@ -184,7 +159,7 @@ function BannerCarousel({ images, preload, interval }: Props) {
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_48px]"
+      class="grid sm:grid-cols-[50px_1fr_50px] sm:grid-rows-[1fr_50px_1fr]"
     >
       <Slider class="col-span-full row-span-full scrollbar-none gap-6">
         {images?.map((image, index) => (
