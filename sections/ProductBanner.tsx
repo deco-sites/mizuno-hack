@@ -47,7 +47,7 @@ export default function ProductBanner({ title, products }: Props) {
     <section class="py-11 grid gap-10">
       <Title title={title} />
 
-      <div class="px-6 grid grid-cols-2 gap-x-6 gap-y-11 md:grid-cols-4 lg:max-w-screen-lg lg:p-0 lg:mx-auto lg:gap-x-8">
+      <div class="px-6 grid grid-cols-2 gap-x-6 gap-y-11 md:grid-cols-4 lg:max-w-lg lg:p-0 lg:mx-auto lg:gap-x-8">
         {products.map((product) => <Item {...product} />)}
       </div>
     </section>

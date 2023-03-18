@@ -33,6 +33,9 @@ const gridRows = ([arg]: string[]) => {
 const options: Omit<Options, "selfURL"> = {
   theme: {
     extend: {
+      maxWidth: {
+        lg: "1056px",
+      },
       colors: {
         primary: "#001489",
         secondary: "#009bdb",
@@ -147,7 +150,7 @@ const options: Omit<Options, "selfURL"> = {
     screens: {
       sm: "640px",
       md: "768px",
-      lg: "1056px",
+      lg: "1024px",
       xl: "1280px",
       "2xl": "1536px",
       "3xl": "1920px",

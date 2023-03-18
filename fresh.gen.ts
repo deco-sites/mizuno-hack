@@ -119,72 +119,31 @@ const manifest: DecoManifest = {
         "title": " Banner Grid",
         "type": "object",
         "properties": {
-          "title": {
-            "type": [
-              "string",
-              "null",
-            ],
-            "title": "Title",
-          },
-          "itemsPerLine": {
-            "title": "Items Per Line",
-            "type": "object",
-            "properties": {
-              "mobile": {
-                "type": [
-                  "number",
-                  "null",
-                ],
-                "title": "Mobile",
-              },
-              "desktop": {
-                "type": [
-                  "number",
-                  "null",
-                ],
-                "title": "Desktop",
-              },
-            },
-            "required": [],
-            "description": "Default is 2 for mobile and all for desktop",
-          },
-          "borderRadius": {
-            "title": "Border Radius",
-            "type": "object",
-            "properties": {
-              "mobile": {
-                "type": [
-                  "number",
-                  "null",
-                ],
-                "title": "Mobile",
-              },
-              "desktop": {
-                "type": [
-                  "number",
-                  "null",
-                ],
-                "title": "Desktop",
-              },
-            },
-            "required": [],
-            "description": "Item's border radius in px",
-          },
           "banners": {
             "type": "array",
             "items": {
               "title": "Banner",
               "type": "object",
               "properties": {
-                "srcMobile": {
-                  "format": "image-uri",
-                  "type": "string",
-                  "title": "Src Mobile",
-                },
-                "srcDesktop": {
-                  "format": "image-uri",
-                  "type": "string",
-                  "title": "Src Desktop",
+                "image": {
+                  "title": "Image",
+                  "type": "object",
+                  "properties": {
+                    "desktop": {
+                      "format": "image-uri",
+                      "type": "string",
+                      "title": "Desktop",
+                    },
+                    "mobile": {
+                      "format": "image-uri",
+                      "type": "string",
+                      "title": "Mobile",
+                    },
+                  },
+                  "required": [
+                    "desktop",
+                    "mobile",
+                  ],
                 },
                 "alt": {
                   "type": "string",
@@ -192,24 +151,48 @@ const manifest: DecoManifest = {
                   "description": "Image alt text",
                 },
                 "href": {
-                  "type": "string",
+                  "type": [
+                    "string",
+                    "null",
+                  ],
                   "title": "Href",
                   "description": "When you click you go to",
                 },
               },
               "required": [
-                "srcMobile",
+                "image",
                 "alt",
-                "href",
               ],
             },
             "title": "Banners",
           },
+          "itemsPerRow": {
+            "title": "Items Per Row",
+            "type": "object",
+            "properties": {
+              "desktop": {
+                "type": "number",
+                "title": "Desktop",
+              },
+              "tablet": {
+                "type": "number",
+                "title": "Tablet",
+              },
+              "phone": {
+                "type": "number",
+                "title": "Phone",
+              },
+            },
+            "required": [
+              "desktop",
+              "tablet",
+              "phone",
+            ],
+          },
         },
         "required": [
-          "itemsPerLine",
-          "borderRadius",
           "banners",
+          "itemsPerRow",
         ],
       },
       "outputSchema": null,

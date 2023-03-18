@@ -104,7 +104,7 @@ function Dots({ images }: Props) {
       >
       </style>
 
-      <ol class="py-4 flex justify-center col-span-full gap-3 sm:hidden">
+      <ol class="pt-4 flex justify-center col-span-full gap-3 sm:hidden">
         {images?.map((_, index) => (
           <li class="leading-[0]">
             <button
