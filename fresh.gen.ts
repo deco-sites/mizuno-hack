@@ -13,9 +13,10 @@ import * as $4 from "./routes/index.tsx";
 import * as $$0 from "./islands/AddToCartButton.tsx";
 import * as $$1 from "./islands/HeaderButton.tsx";
 import * as $$2 from "./islands/HeaderModals.tsx";
-import * as $$3 from "./islands/HeaderSearchMenu.tsx";
-import * as $$4 from "./islands/SearchControls.tsx";
-import * as $$5 from "./islands/SliderJS.tsx";
+import * as $$3 from "./islands/HeaderSearchInput.tsx";
+import * as $$4 from "./islands/HeaderSearchMenu.tsx";
+import * as $$5 from "./islands/SearchControls.tsx";
+import * as $$6 from "./islands/SliderJS.tsx";
 import * as $$$0 from "./sections/BannerGrid.tsx";
 import * as $$$1 from "./sections/Carousel.tsx";
 import * as $$$2 from "./sections/CookieConsent.tsx";
@@ -67,9 +68,10 @@ const manifest: DecoManifest = {
     "./islands/AddToCartButton.tsx": $$0,
     "./islands/HeaderButton.tsx": $$1,
     "./islands/HeaderModals.tsx": $$2,
-    "./islands/HeaderSearchMenu.tsx": $$3,
-    "./islands/SearchControls.tsx": $$4,
-    "./islands/SliderJS.tsx": $$5,
+    "./islands/HeaderSearchInput.tsx": $$3,
+    "./islands/HeaderSearchMenu.tsx": $$4,
+    "./islands/SearchControls.tsx": $$5,
+    "./islands/SliderJS.tsx": $$6,
   },
   sections: {
     "./sections/BannerGrid.tsx": $$$0,
@@ -688,7 +690,18 @@ const manifest: DecoManifest = {
           "alerts": {
             "type": "array",
             "items": {
-              "type": "string",
+              "title": "AlertMessage",
+              "type": "object",
+              "properties": {
+                "html": {
+                  "format": "html",
+                  "type": "string",
+                  "title": "Html",
+                },
+              },
+              "required": [
+                "html",
+              ],
             },
             "title": "Alerts",
           },
@@ -840,9 +853,68 @@ const manifest: DecoManifest = {
             "title": "Config V T E X",
             "description": "vtex config used for search autocompletion;",
           },
+          "logo": {
+            "title": "Logo",
+            "type": "object",
+            "properties": {
+              "devices": {
+                "type": "array",
+                "items": {
+                  "title": "LogoImage",
+                  "type": "object",
+                  "properties": {
+                    "device": {
+                      "type": "string",
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "const": "desktop",
+                        },
+                        {
+                          "type": "string",
+                          "const": "mobile",
+                        },
+                      ],
+                      "title": "Device",
+                    },
+                    "src": {
+                      "format": "image-uri",
+                      "type": "string",
+                      "title": "Src",
+                    },
+                    "width": {
+                      "type": "number",
+                      "title": "Width",
+                    },
+                    "height": {
+                      "type": "number",
+                      "title": "Height",
+                    },
+                  },
+                  "required": [
+                    "device",
+                    "src",
+                    "width",
+                    "height",
+                  ],
+                },
+                "title": "Devices",
+              },
+              "alt": {
+                "type": "string",
+                "title": "Alt",
+              },
+            },
+            "required": [
+              "devices",
+              "alt",
+            ],
+            "description": "Logo",
+          },
         },
         "required": [
           "alerts",
+          "logo",
         ],
       },
       "outputSchema": null,
@@ -917,7 +989,10 @@ const manifest: DecoManifest = {
                   "title": "Image",
                 },
                 "alt": {
-                  "type": "string",
+                  "type": [
+                    "string",
+                    "null",
+                  ],
                   "title": "Alt",
                 },
                 "url": {
@@ -927,7 +1002,6 @@ const manifest: DecoManifest = {
               },
               "required": [
                 "image",
-                "alt",
                 "url",
               ],
             },
