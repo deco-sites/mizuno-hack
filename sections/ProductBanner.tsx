@@ -3,7 +3,7 @@ import Title from "$store/components/ui/Title.tsx";
 
 export interface Product {
   image: LiveImage;
-  alt: string;
+  alt?: string;
   url: string;
 }
 
