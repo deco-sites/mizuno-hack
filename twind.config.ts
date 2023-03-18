@@ -42,10 +42,24 @@ const options: Omit<Options, "selfURL"> = {
 
         gray: {
           100: "#F9F9F8",
+          200: "#ebebeb",
+          300: "#e6e5e5",
         },
       },
       fontFamily: {
         "sans": ["Roboto", "sans-serif"],
+      },
+      textColor: {
+        "color-heading-1": "#009bdb",
+        "link": "#009bdb",
+        "default": "#161616",
+        "default-inverse": "#FFFFFF",
+        // "subdued": "#66736C",
+        // "subdued-inverse": "#C6C6C6",
+        // "price": "#8C3D3D",
+        // "section-title": "#161616",
+        // "positive": "#1A7346",
+        // "critical": "#B44125",
       },
       fontSize: {
         "2xs": "0.625rem",
@@ -88,14 +102,14 @@ const options: Omit<Options, "selfURL"> = {
       //   // "positive": "#1A7346",
       //   // "critical": "#B44125",
       // },
-      // borderColor: {
-      //   "default": "#D4DBD7",
-      //   "default-inverse": "#FFFFFF",
-      //   "interactive": "#161616",
-      //   "focus": "#3379EF",
-      //   "positive": "#1A7346",
-      //   "critical": "#B44125",
-      // },
+      borderColor: {
+        "default": "#D4DBD7",
+        "default-inverse": "#FFFFFF",
+        // "interactive": "#161616",
+        // "focus": "#3379EF",
+        // "positive": "#1A7346",
+        // "critical": "#B44125",
+      },
       // outline: {
       //   interactive: ["2px solid #3379EF", "2px"],
       // },
@@ -121,25 +135,25 @@ const options: Omit<Options, "selfURL"> = {
       //   // "caption": "400",
       //   // "list-price": "400",
       // },
-      // animation: {
-      //   "slide-left": "slide-left-frame 0.4s ease normal",
-      //   "slide-right": "slide-right-frame 0.4s ease normal",
-      //   "slide-bottom": "slide-bottom-frame 0.4s ease normal",
-      // },
-      // keyframes: {
-      //   "slide-left-frame": {
-      //     from: { transform: "translateX(100%)" },
-      //     to: { transform: "translateX(0)" },
-      //   },
-      //   "slide-right-frame": {
-      //     from: { transform: "translateX(-100%)" },
-      //     to: { transform: "translateX(0)" },
-      //   },
-      //   "slide-bottom-frame": {
-      //     from: { transform: "translateY(100%)" },
-      //     to: { transform: "translateY(0)" },
-      //   },
-      // },
+      animation: {
+        "slide-left": "slide-left-frame 0.4s ease normal",
+        "slide-right": "slide-right-frame 0.4s ease normal",
+        "slide-bottom": "slide-bottom-frame 0.4s ease normal",
+      },
+      keyframes: {
+        "slide-left-frame": {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0)" },
+        },
+        "slide-right-frame": {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(0)" },
+        },
+        "slide-bottom-frame": {
+          from: { transform: "translateY(100%)" },
+          to: { transform: "translateY(0)" },
+        },
+      },
       // boxShadow: {
       //   sm: "0px 1px 3px 0px #00000014",
       //   default: "0px 1px 4px 0px #0000001F",
@@ -210,6 +224,18 @@ const options: Omit<Options, "selfURL"> = {
       "-ms-overflow-style": "none",
       "&::-webkit-scrollbar": {
         display: "none",
+      },
+    },
+    "header-alert": {
+      // text-underline text-link
+      "a": ({ theme }) => ({
+        "color": theme("textColor").link,
+        "text-decoration": "underline",
+      }),
+    },
+    "p-inline": {
+      "p": {
+        display: "inline",
       },
     },
     "text-shadow": { textShadow: "#009bdb57 1px 1px" },

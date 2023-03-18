@@ -29,8 +29,14 @@ function MenuButton() {
       onClick={() => {
         displayMenu.value = true;
       }}
+      class="w-[48px] h-[48px]"
     >
-      <Icon id="Bars3" width={20} height={20} strokeWidth={0.01} />
+      <div class="w-[30px] h-[20px] flex flex-col justify-between items-center">
+        <i class="w-[100%] h-[2px] bg-secondary" />
+        <i class="w-[100%] h-[2px] bg-secondary" />
+        <i class="w-[100%] h-[2px] bg-secondary" />
+      </div>
+      {/* <Icon id="Bars3" width={20} height={20} strokeWidth={0.01} /> */}
     </Button>
   );
 }
@@ -50,12 +56,21 @@ function CartButton() {
         displayCart.value = true;
       }}
     >
-      <Icon id="ShoppingCart" width={20} height={20} strokeWidth={2} />
-      {totalItems && (
-        <span class="absolute text-[9px] right-0 top-0 rounded-full bg-badge text-white w-4 h-4 flex items-center justify-center">
-          {totalItems}
-        </span>
-      )}
+      <Icon
+        class="lg:hidden"
+        id="ShoppingCart"
+        width={38}
+        height={38}
+      />
+      <Icon
+        class="hidden lg:block"
+        id="ShoppingCart"
+        width={28}
+        height={28}
+      />
+      <span class="absolute text-xs right-0 top-0 rounded-full bg-secondary text-white w-5 h-5 flex items-center justify-center">
+        {totalItems ?? 0}
+      </span>
     </Button>
   );
 }

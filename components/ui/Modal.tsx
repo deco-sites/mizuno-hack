@@ -14,8 +14,8 @@ if (IS_BROWSER && typeof window.HTMLDialogElement === "undefined") {
   );
 }
 
-export type Props = JSX.IntrinsicElements["dialog"] & {
-  title?: string;
+export type Props = Omit<JSX.IntrinsicElements["dialog"], "title"> & {
+  title?: preact.ComponentChildren;
   mode?: "sidebar-right" | "sidebar-left" | "center";
   onClose?: () => Promise<void> | void;
   loading?: "lazy" | "eager";
@@ -40,6 +40,8 @@ const Modal = ({
   const ref = useRef<HTMLDialogElement>(null);
   const variant = styles[mode];
 
+  console.log(typeof title);
+
   useEffect(() => {
     if (ref.current?.open === true && open === false) {
       document.getElementsByTagName("body").item(0)?.removeAttribute(
@@ -56,6 +58,8 @@ const Modal = ({
     }
   }, [open]);
 
+  const isTitleText = typeof title === "string";
+
   return (
     <dialog
       {...props}
@@ -66,15 +70,21 @@ const Modal = ({
       onClick={(e) =>
         (e.target as HTMLDialogElement).tagName === "DIALOG" && onClose?.()}
     >
-      <section class="pt-6 h-full bg-default flex flex-col">
-        <header class="flex px-4 justify-between items-center pb-6 border-b-1 border-default">
-          <h1>
-            <Text variant="heading-2">{title}</Text>
-          </h1>
-          <Button variant="icon" onClick={onClose}>
-            <Icon id="XMark" width={20} height={20} strokeWidth={2} />
-          </Button>
-        </header>
+      <section
+        class={`${!isTitleText && "pt-0"} h-full bg-white flex flex-col`}
+      >
+        {isTitleText
+          ? (
+            <header class="flex px-4 justify-between items-center pb-6 border-b-1 border-default">
+              <h1>
+                <Text variant="heading-2">{title}</Text>
+              </h1>
+              <Button variant="icon" onClick={onClose}>
+                <Icon id="XMark" width={20} height={20} strokeWidth={2} />
+              </Button>
+            </header>
+          )
+          : title}
         <div class="overflow-y-auto h-full flex flex-col">
           {loading === "lazy" ? lazy.value && children : children}
         </div>

@@ -5,9 +5,9 @@ import type { LoaderReturnType } from "$live/types.ts";
 import type { Product, Suggestion } from "deco-sites/std/commerce/types.ts";
 import type { ClientConfigVTEX } from "deco-sites/std/functions/vtexConfig.ts";
 
-import Alert from "./Alert.tsx";
-import Navbar from "./Navbar.tsx";
-import { headerHeight } from "./constants.ts";
+import Alert, { AlertMessage } from "./Alert.tsx";
+import Navbar, { LogoProps } from "./Navbar.tsx";
+import { headerHeight, mobileHeaderHeight } from "./constants.ts";
 
 export interface NavItem {
   label: string;
@@ -27,7 +27,7 @@ export interface NavItem {
 }
 
 export interface Props {
-  alerts: string[];
+  alerts: AlertMessage[];
   /** @title Search Bar */
   searchbar?: SearchbarProps;
   /**
@@ -51,6 +51,11 @@ export interface Props {
    * @description vtex config used for search autocompletion;
    */
   configVTEX?: LoaderReturnType<ClientConfigVTEX>;
+
+  /**
+   * @description Logo
+   */
+  logo: LogoProps;
 }
 
 function Header(
@@ -61,14 +66,15 @@ function Header(
     navItems = [],
     suggestions,
     configVTEX,
+    logo,
   }: Props,
 ) {
   const searchbar = { ..._searchbar, products, suggestions, configVTEX };
   return (
-    <header class={`h-[${headerHeight}]`}>
-      <div class="bg-default fixed w-full z-50">
+    <header class={`lg:h-[${headerHeight}] h-[${mobileHeaderHeight}]`}>
+      <div class="bg-white fixed w-full z-50">
         <Alert alerts={alerts} />
-        <Navbar items={navItems} searchbar={searchbar} />
+        <Navbar items={navItems} searchbar={searchbar} logo={logo} />
       </div>
 
       <Modals
