@@ -917,7 +917,10 @@ const manifest: DecoManifest = {
                   "title": "Image",
                 },
                 "alt": {
-                  "type": "string",
+                  "type": [
+                    "string",
+                    "null",
+                  ],
                   "title": "Alt",
                 },
                 "url": {
@@ -927,7 +930,6 @@ const manifest: DecoManifest = {
               },
               "required": [
                 "image",
-                "alt",
                 "url",
               ],
             },
