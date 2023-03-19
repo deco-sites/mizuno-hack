@@ -35,6 +35,7 @@ export default function BannerGrid({ banners, itemsPerRow }: Props) {
 					<Picture class='w-full' loading='lazy'>
 						<Source
 							media='(max-width: 640px)'
+							fetchPriority='low'
 							src={banner.image.mobile}
 							width={360}
 							height={450}
@@ -43,6 +44,7 @@ export default function BannerGrid({ banners, itemsPerRow }: Props) {
 
 						<Source
 							media='(max-width: 1024px)'
+							fetchPriority='low'
 							src={banner.image.mobile}
 							width={640}
 							height={800}
@@ -51,6 +53,7 @@ export default function BannerGrid({ banners, itemsPerRow }: Props) {
 
 						<Source
 							media='(min-width: 1024px)'
+							fetchPriority='low'
 							src={banner.image.desktop}
 							width={690}
 							height={450}
