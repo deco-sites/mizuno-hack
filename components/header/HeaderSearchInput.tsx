@@ -14,7 +14,7 @@ interface Props {
 export default function HeaderSearchInput({ searchbar }: Props) {
   return (
     <div
-      class={`bg-300 h-[38px] lg:(h-[30px] bg-white)`}
+      class={`bg-gray-300 h-[38px] lg:(h-[30px] bg-white)`}
     >
       {!!window?.location && (
         <Suspense fallback={<Loading />}>

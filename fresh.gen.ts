@@ -17,26 +17,27 @@ import * as $$3 from "./islands/HeaderSearchInput.tsx";
 import * as $$4 from "./islands/HeaderSearchMenu.tsx";
 import * as $$5 from "./islands/SearchControls.tsx";
 import * as $$6 from "./islands/SliderJS.tsx";
-import * as $$$0 from "./sections/BannerGrid.tsx";
-import * as $$$1 from "./sections/Carousel.tsx";
-import * as $$$2 from "./sections/CookieConsent.tsx";
-import * as $$$3 from "./sections/DesignSystem.story.tsx";
-import * as $$$4 from "./sections/Features.tsx";
-import * as $$$5 from "./sections/Footer.tsx";
-import * as $$$6 from "./sections/Header.tsx";
-import * as $$$7 from "./sections/Highlights.tsx";
-import * as $$$8 from "./sections/ProductBanner.tsx";
-import * as $$$9 from "./sections/ProductDetails.tsx";
-import * as $$$10 from "./sections/ProductGallery.tsx";
-import * as $$$11 from "./sections/ProductShelf.tsx";
-import * as $$$12 from "./sections/SearchControls.tsx";
-import * as $$$13 from "./sections/WhatsApp.tsx";
-import * as $$$14 from "deco-sites/std/sections/SEO.tsx";
-import * as $$$15 from "deco-sites/std/sections/SEOPDP.tsx";
-import * as $$$16 from "deco-sites/std/sections/SEOPLP.tsx";
-import * as $$$17 from "deco-sites/std/sections/configOCC.global.tsx";
-import * as $$$18 from "deco-sites/std/sections/configShopify.global.tsx";
-import * as $$$19 from "deco-sites/std/sections/configVTEX.global.tsx";
+import * as $$$0 from "./sections/BannerFull.tsx";
+import * as $$$1 from "./sections/BannerGrid.tsx";
+import * as $$$2 from "./sections/Carousel.tsx";
+import * as $$$3 from "./sections/CookieConsent.tsx";
+import * as $$$4 from "./sections/DesignSystem.story.tsx";
+import * as $$$5 from "./sections/Features.tsx";
+import * as $$$6 from "./sections/Footer.tsx";
+import * as $$$7 from "./sections/Header.tsx";
+import * as $$$8 from "./sections/Highlights.tsx";
+import * as $$$9 from "./sections/ProductBanner.tsx";
+import * as $$$10 from "./sections/ProductDetails.tsx";
+import * as $$$11 from "./sections/ProductGallery.tsx";
+import * as $$$12 from "./sections/ProductShelf.tsx";
+import * as $$$13 from "./sections/SearchControls.tsx";
+import * as $$$14 from "./sections/WhatsApp.tsx";
+import * as $$$15 from "deco-sites/std/sections/SEO.tsx";
+import * as $$$16 from "deco-sites/std/sections/SEOPDP.tsx";
+import * as $$$17 from "deco-sites/std/sections/SEOPLP.tsx";
+import * as $$$18 from "deco-sites/std/sections/configOCC.global.tsx";
+import * as $$$19 from "deco-sites/std/sections/configShopify.global.tsx";
+import * as $$$20 from "deco-sites/std/sections/configVTEX.global.tsx";
 import * as $$$$0 from "$live/functions/EffectSelectPage.ts";
 import * as $$$$1 from "$live/functions/MatchDate.ts";
 import * as $$$$2 from "$live/functions/MatchEnvironment.ts";
@@ -74,26 +75,27 @@ const manifest: DecoManifest = {
     "./islands/SliderJS.tsx": $$6,
   },
   sections: {
-    "./sections/BannerGrid.tsx": $$$0,
-    "./sections/Carousel.tsx": $$$1,
-    "./sections/CookieConsent.tsx": $$$2,
-    "./sections/DesignSystem.story.tsx": $$$3,
-    "./sections/Features.tsx": $$$4,
-    "./sections/Footer.tsx": $$$5,
-    "./sections/Header.tsx": $$$6,
-    "./sections/Highlights.tsx": $$$7,
-    "./sections/ProductBanner.tsx": $$$8,
-    "./sections/ProductDetails.tsx": $$$9,
-    "./sections/ProductGallery.tsx": $$$10,
-    "./sections/ProductShelf.tsx": $$$11,
-    "./sections/SearchControls.tsx": $$$12,
-    "./sections/WhatsApp.tsx": $$$13,
-    "deco-sites/std/sections/SEO.tsx": $$$14,
-    "deco-sites/std/sections/SEOPDP.tsx": $$$15,
-    "deco-sites/std/sections/SEOPLP.tsx": $$$16,
-    "deco-sites/std/sections/configOCC.global.tsx": $$$17,
-    "deco-sites/std/sections/configShopify.global.tsx": $$$18,
-    "deco-sites/std/sections/configVTEX.global.tsx": $$$19,
+    "./sections/BannerFull.tsx": $$$0,
+    "./sections/BannerGrid.tsx": $$$1,
+    "./sections/Carousel.tsx": $$$2,
+    "./sections/CookieConsent.tsx": $$$3,
+    "./sections/DesignSystem.story.tsx": $$$4,
+    "./sections/Features.tsx": $$$5,
+    "./sections/Footer.tsx": $$$6,
+    "./sections/Header.tsx": $$$7,
+    "./sections/Highlights.tsx": $$$8,
+    "./sections/ProductBanner.tsx": $$$9,
+    "./sections/ProductDetails.tsx": $$$10,
+    "./sections/ProductGallery.tsx": $$$11,
+    "./sections/ProductShelf.tsx": $$$12,
+    "./sections/SearchControls.tsx": $$$13,
+    "./sections/WhatsApp.tsx": $$$14,
+    "deco-sites/std/sections/SEO.tsx": $$$15,
+    "deco-sites/std/sections/SEOPDP.tsx": $$$16,
+    "deco-sites/std/sections/SEOPLP.tsx": $$$17,
+    "deco-sites/std/sections/configOCC.global.tsx": $$$18,
+    "deco-sites/std/sections/configShopify.global.tsx": $$$19,
+    "deco-sites/std/sections/configVTEX.global.tsx": $$$20,
   },
   functions: {
     "$live/functions/EffectSelectPage.ts": $$$$0,
@@ -116,6 +118,56 @@ const manifest: DecoManifest = {
     "deco-sites/std/functions/vtexSuggestions.ts": $$$$17,
   },
   schemas: {
+    "./sections/BannerFull.tsx": {
+      "inputSchema": {
+        "title": " Banner Full",
+        "type": "object",
+        "properties": {
+          "image": {
+            "title": "Image",
+            "type": "object",
+            "properties": {
+              "desktop": {
+                "format": "image-uri",
+                "type": "string",
+                "title": "Desktop",
+              },
+              "tablet": {
+                "format": "image-uri",
+                "type": "string",
+                "title": "Tablet",
+              },
+              "phone": {
+                "format": "image-uri",
+                "type": "string",
+                "title": "Phone",
+              },
+            },
+            "required": [
+              "desktop",
+              "tablet",
+              "phone",
+            ],
+          },
+          "alt": {
+            "type": "string",
+            "title": "Alt",
+          },
+          "href": {
+            "type": [
+              "string",
+              "null",
+            ],
+            "title": "Href",
+          },
+        },
+        "required": [
+          "image",
+          "alt",
+        ],
+      },
+      "outputSchema": null,
+    },
     "./sections/BannerGrid.tsx": {
       "inputSchema": {
         "title": " Banner Grid",

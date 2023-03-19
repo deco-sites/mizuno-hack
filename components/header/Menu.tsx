@@ -101,7 +101,7 @@ function MenuItem({ item, level = 0 }: { item: INavItem; level?: number }) {
 
 function Menu({ items }: Props) {
   return (
-    <ul class="flex-grow flex flex-col divide-y divide-default bg-300">
+    <ul class="flex-grow flex flex-col divide-y divide-default bg-gray-300">
       {items.map((item) => <MenuItem item={item} />)}
     </ul>
   );

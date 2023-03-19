@@ -48,7 +48,7 @@ export default function BannerGrid({ banners, itemsPerRow }: Props) {
             />
 
             <Source
-              media="(max-width: 1024px)"
+              media="(min-width: 1024px)"
               src={banner.image.desktop}
               width={690}
               height={450}
