@@ -47,7 +47,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 				<Picture class='w-full' preload={lcp}>
 					<Source
 						media='(max-width: 639px)'
-						fetchPriority={lcp ? 'high' : 'auto'}
+						// fetchPriority={lcp ? 'high' : 'auto'}
 						src={phone}
 						width={256}
 						height={320}
@@ -56,7 +56,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 
 					<Source
 						media='(max-width: 1023px)'
-						fetchPriority={lcp ? 'high' : 'auto'}
+						// fetchPriority={lcp ? 'high' : 'auto'}
 						src={tablet}
 						width={960}
 						height={350}
@@ -65,7 +65,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 
 					<Source
 						media='(min-width: 1024px)'
-						fetchPriority={lcp ? 'high' : 'auto'}
+						// fetchPriority={lcp ? 'high' : 'auto'}
 						src={desktop}
 						width={1370}
 						height={500}
@@ -74,7 +74,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 
 					<Source
 						media='(min-width: 1920px)'
-						fetchPriority={lcp ? 'high' : 'auto'}
+						// fetchPriority={lcp ? 'high' : 'auto'}
 						src={desktop}
 						width={1920}
 						height={700}
