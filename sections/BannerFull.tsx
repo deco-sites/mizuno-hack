@@ -14,12 +14,13 @@ export interface Props {
 export default function BannerFull({ image, alt, href }: Props) {
 	return (
 		<a class='mt-12 block' href={href ?? '#'}>
-			<Picture class='w-full'>
+			<Picture class='w-full' loading='lazy'>
 				<Source
 					media='(max-width: 640px)'
 					src={image.phone}
 					width={360}
 					height={450}
+					loading='lazy'
 				/>
 
 				<Source
@@ -27,6 +28,7 @@ export default function BannerFull({ image, alt, href }: Props) {
 					src={image.tablet}
 					width={960}
 					height={426}
+					loading='lazy'
 				/>
 
 				<Source
@@ -34,6 +36,7 @@ export default function BannerFull({ image, alt, href }: Props) {
 					src={image.desktop}
 					width={690}
 					height={450}
+					loading='lazy'
 				/>
 
 				<img

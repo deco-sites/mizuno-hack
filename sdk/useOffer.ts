@@ -54,7 +54,9 @@ const fullInstallmentToString = (
 
 	const withTaxes = sellingPrice < price
 
-	return `ou até ${billingDuration}x de R$ ${billingIncrement} ${withTaxes ? 'com juros' : 'sem juros'}`
+	return `ou até ${billingDuration}x de R$ ${billingIncrement} ${
+		withTaxes ? 'com juros' : 'sem juros'
+	}`
 }
 
 export const useOffer = (aggregateOffer?: AggregateOffer) => {

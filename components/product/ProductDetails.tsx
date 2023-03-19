@@ -157,7 +157,8 @@ function Details({ page, badge }: { page: ProductDetailsPage; badge?: string }) 
 						</Button>
 					</div>
 
-					{/* <div class='flex mt-10 h-8'>
+					{
+						/* <div class='flex mt-10 h-8'>
 						<Icon id='Coin' width={26} height={26} strokeWidth={0} />
 						<span class='flex-1'>
 							Compre e receba R$ 70,00 de bônus para sua próxima compra.{' '}
@@ -165,7 +166,8 @@ function Details({ page, badge }: { page: ProductDetailsPage; badge?: string }) 
 								Veja as regras.
 							</a>
 						</span>
-					</div> */}
+					</div> */
+					}
 				</div>
 			</div>
 		</Container>

@@ -51,6 +51,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						src={phone}
 						width={256}
 						height={320}
+						loading='lazy'
 					/>
 
 					<Source
@@ -59,6 +60,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						src={tablet}
 						width={960}
 						height={350}
+						loading='lazy'
 					/>
 
 					<Source
@@ -67,6 +69,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						src={desktop}
 						width={1370}
 						height={500}
+						loading='lazy'
 					/>
 
 					<Source
@@ -75,6 +78,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						src={desktop}
 						width={1920}
 						height={700}
+						loading='lazy'
 					/>
 
 					<img

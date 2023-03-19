@@ -31,10 +31,21 @@ function VariantSelector({ product }: Props) {
 		<ul class='flex flex-col gap-4 '>
 			{Object.keys(possibilities).map((name) => (
 				<li class='flex flex-col gap-2'>
-					<Text variant='caption' class={`text-sm text-uppercase ${name === 'Cor' ? 'font-bold' : 'text-[0.8rem]'}`}>
+					<Text
+						variant='caption'
+						class={`text-sm text-uppercase ${
+							name === 'Cor' ? 'font-bold' : 'text-[0.8rem]'
+						}`}
+					>
 						{getTitle(name, Object.keys(possibilities[name]).length)}
 					</Text>
-					<ul class={`flex flex-row w-full ${name !== 'Cor' ? 'gap-3 flex-wrap max-w-[350px]' : 'gap-2 overflow-y-auto'}`}>
+					<ul
+						class={`flex flex-row w-full ${
+							name !== 'Cor'
+								? 'gap-3 flex-wrap max-w-[350px]'
+								: 'gap-2 overflow-y-auto'
+						}`}
+					>
 						{Object.entries(possibilities[name]).map(([url, value]) => (
 							<li>
 								<a href={url}>

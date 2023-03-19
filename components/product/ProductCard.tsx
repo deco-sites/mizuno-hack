@@ -50,7 +50,7 @@ function ProductCard({ product, preload }: Props) {
 					width={150}
 					height={150}
 					preload={preload}
-					loading={preload ? 'eager' : 'lazy'}
+					loading='lazy'
 					sizes='(max-width: 640px) 50vw, 20vw'
 				/>
 

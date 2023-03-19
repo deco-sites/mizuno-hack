@@ -20,7 +20,7 @@ function NavItem({ item }: { item: INavItem }) {
 		>
 			<a href={href} class={`px-4 py-3 text-[1.1rem] font-black text-uppercase`}>
 				<Text // class='group-hover:border-black border-solid border-b border-white'
-				variant='menu'>
+				 variant='menu'>
 					{label}
 				</Text>
 			</a>
