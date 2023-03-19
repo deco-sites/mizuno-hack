@@ -1,6 +1,9 @@
 import Text from '$store/components/ui/Text.tsx'
 import Image from 'deco-sites/std/components/Image.tsx'
-
+// HEAD
+//
+import { headerHeight } from './constants.ts'
+//feat/product-card
 export interface INavItem {
 	label: string
 	href: string
@@ -16,10 +19,8 @@ function NavItem({ item }: { item: INavItem }) {
 			class={`group flex items-center justify-center relative border-l-1 border-gray-300 hover:bg-gray-300 transition-colors duration-300`}
 		>
 			<a href={href} class={`px-4 py-3 text-[1.1rem] font-black text-uppercase`}>
-				<Text
-					// class='group-hover:border-black border-solid border-b border-white'
-					variant='menu'
-				>
+				<Text // class='group-hover:border-black border-solid border-b border-white'
+				variant='menu'>
 					{label}
 				</Text>
 			</a>

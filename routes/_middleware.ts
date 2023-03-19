@@ -1,6 +1,6 @@
-import { withLive } from "$live/live.ts";
+import { withLive } from '$live/live.ts'
 
 export const handler = withLive({
-  siteId: 683,
-  site: "mizuno-hack",
-});
+	siteId: 683,
+	site: 'mizuno-hack',
+})

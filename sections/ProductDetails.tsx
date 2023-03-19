@@ -1,9 +1,7 @@
-import ProductDetails, {
-  Props,
-} from "$store/components/product/ProductDetails.tsx";
+import ProductDetails, { Props } from '$store/components/product/ProductDetails.tsx'
 
 function ProductDetailsSection(props: Props) {
-  return <ProductDetails {...props} />;
+	return <ProductDetails {...props} />
 }
 
-export default ProductDetailsSection;
+export default ProductDetailsSection

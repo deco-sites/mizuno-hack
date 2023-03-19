@@ -101,7 +101,7 @@ function Modals({ menu, searchbar }: Props) {
 			<Modal
 				title={<CartTitle />}
 				mode='sidebar-right'
-				class="sm:max-w-sm"
+				class='sm:max-w-sm'
 				loading='lazy'
 				open={displayCart.value}
 				onClose={() => {

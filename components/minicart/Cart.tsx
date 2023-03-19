@@ -78,12 +78,12 @@ function Cart() {
 				{total?.value && (
 					<div class='border-t-1 border-default pt-4 flex flex-col justify-end items-center gap-2 px-8'>
 						<div class='flex justify-between items-center w-full text-primary text-uppercase'>
-							<Text variant='body' class="text-secondary font-black">Total</Text>
-							<Text variant='heading-3' class="text-secondary font-black">
+							<Text variant='body' class='text-secondary font-black'>Total</Text>
+							<Text variant='heading-3' class='text-secondary font-black'>
 								{formatPrice(total.value / 100, currencyCode!, locale)}
 							</Text>
 						</div>
-						<Text tone='subdued' variant='caption' class="text-xs">
+						<Text tone='subdued' variant='caption' class='text-xs'>
 							Taxas e fretes serão calculados no checkout
 						</Text>
 					</div>
@@ -101,7 +101,7 @@ function Cart() {
 							Finalizar Compra
 						</Button>
 					</a>
-          
+
 					<Button
 						variant='secondary'
 						class='text-uppercase w-full py-3 font-medium h-[48px] font-[1.1rem] tracking-wider border-black'
