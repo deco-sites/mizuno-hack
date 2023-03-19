@@ -1,4 +1,5 @@
 import Button from '$store/components/ui/Button.tsx'
+import Image from 'deco-sites/std/components/Image.tsx'
 import type { JSX } from 'preact'
 
 /**
@@ -9,43 +10,39 @@ import type { JSX } from 'preact'
 interface Abbreviation {
 	variant: 'abbreviation'
 	content: string
+  available?: boolean
+	imageSrc?: string
 }
 
 interface Color {
 	variant: 'color'
-	content: keyof typeof colors
+	content: string
+  available?: boolean
+	imageSrc?: string
 }
 
 interface Idempotent {
 	variant: 'idempotent'
 	content: string
-}
-
-const colors = {
-	'azul-clara': '#87CEFA',
-	'azul-marinho': '#000080',
-	'branca': '#FFFFFF',
-	'cinza': '#808080',
-	'cinza-escura': '#A9A9A9',
-	'laranja': '#FFA500',
-	'marrom': '#A52A2A',
-	'preta': '#161616',
-	'verde-clara': '#90EE90',
-	'vermelha': '#FF0000',
+  available?: boolean
+	imageSrc?: string
 }
 
 type Props =
 	& JSX.IntrinsicElements['button']
 	& (Abbreviation | Color | Idempotent)
 
-function Avatar({ variant, content, class: _class = '', ...btnProps }: Props) {
+function Avatar({ variant, content, imageSrc, class: _class = '', available = true, ...btnProps }: Props) {
 	if (variant === 'color') {
 		return (
 			<button
 				{...btnProps}
-				class={`rounded-full border border-default w-8 h-8 ${_class}`}
-				style={{ backgroundColor: colors[content] ?? '#FFF' }}
-			/>
+				class={`rounded-[5px] border border-default w-16 h-16 ${!available ? 'brightness-50' : ''} ${_class}`}
+			>
+				{imageSrc
+					? <Image src={imageSrc} alt={content} title={content} width={64} height={64} />
+					: content}
+			</button>
 		)
 	}
 
@@ -53,7 +50,7 @@ function Avatar({ variant, content, class: _class = '', ...btnProps }: Props) {
 		return (
 			<button
 				{...btnProps}
-				class={`text-caption font-caption rounded-full border border-default w-8 h-8 flex justify-center items-center hover:bg-interactive hover:border-interactive hover:text-default-inverse disabled:bg-interactive disabled:text-default-inverse disabled:border-interactive ${_class}`}
+				class={`${!available ? 'brightness-50' : ''} text-sm font-medium border border-black w-8 h-8 flex justify-center items-center hover:bg-bg-200 transition-colors duration-300 disabled:bg-black disabled:text-white ${_class}`}
 			>
 				{content.substring(0, 2)}
 			</button>

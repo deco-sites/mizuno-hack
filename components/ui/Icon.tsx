@@ -49,6 +49,8 @@ export type AvailableIcons =
 	| 'Newsletter'
 	| 'WishlistHeart'
 	| 'FilterPlus'
+	| 'Mail'
+	| 'Coin'
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
 	/**

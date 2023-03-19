@@ -42,6 +42,21 @@ const installmentToString = (
 	return `${billingDuration}x de R$ ${billingIncrement}`
 }
 
+const fullInstallmentToString = (
+	installment: UnitPriceSpecification,
+	sellingPrice: number,
+) => {
+	const { billingDuration, billingIncrement, price } = installment
+
+	if (!billingDuration || !billingIncrement) {
+		return ''
+	}
+
+	const withTaxes = sellingPrice < price
+
+	return `ou até ${billingDuration}x de R$ ${billingIncrement} ${withTaxes ? 'com juros' : 'sem juros'}`
+}
+
 export const useOffer = (aggregateOffer?: AggregateOffer) => {
 	const offer = aggregateOffer?.offers[0]
 	const listPrice = offer?.priceSpecification.find((spec) =>
@@ -60,5 +75,6 @@ export const useOffer = (aggregateOffer?: AggregateOffer) => {
 		discount,
 		seller,
 		installments: installment && price ? installmentToString(installment) : null,
+		fullInstallments: installment && price ? fullInstallmentToString(installment, price) : null,
 	}
 }

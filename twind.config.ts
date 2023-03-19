@@ -58,6 +58,7 @@ const options: Omit<Options, 'selfURL'> = {
 				'input-text': '#5B5B5B',
 				'dark-blue': '#001489',
 				'light-blue': '#009CDE',
+        'lighter-blue': 'rgb(0, 210, 255)'
 			},
 			fontFamily: {
 				'sans': ['Roboto', 'sans-serif'],
