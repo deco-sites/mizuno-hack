@@ -18,7 +18,6 @@ function ProductCard({ product, preload }: Props) {
 		name,
 		image: images,
 		offers,
-		isVariantOf,
 	} = product
 	const [front] = images ?? []
 	const { listPrice, price, installments, discount } = useOffer(offers)
@@ -68,9 +67,11 @@ function ProductCard({ product, preload }: Props) {
 			</div>
 
 			<div>
-				<h3 class='mb-2 text-gray-800 text-xs leading-tight font-semibold line-clamp'>
-					{name}
-				</h3>
+				<div class='h-11 mb-2'>
+					<h3 class='text-gray-800 text-xs leading-tight font-semibold line-clamp sm:text-sm'>
+						{name}
+					</h3>
+				</div>
 
 				<div class='h-9 grid content-end'>
 					{listPrice !== price && (
