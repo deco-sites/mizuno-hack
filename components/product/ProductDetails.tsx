@@ -1,16 +1,20 @@
-import Image from 'deco-sites/std/components/Image.tsx'
-import AddToCartButton from '$store/islands/AddToCartButton.tsx'
-import Container from '$store/components/ui/Container.tsx'
-import Text from '$store/components/ui/Text.tsx'
+import { asset } from '$fresh/runtime.ts'
+import type { LoaderReturnType } from '$live/types.ts'
+import Slider from '$store/components/ui/Slider.tsx'
+import SliderControllerJS from '$store/islands/SliderJS.tsx'
 import Breadcrumb from '$store/components/ui/Breadcrumb.tsx'
 import Button from '$store/components/ui/Button.tsx'
+import Container from '$store/components/ui/Container.tsx'
 import Icon from '$store/components/ui/Icon.tsx'
-import { useOffer } from '$store/sdk/useOffer.ts'
+import Text from '$store/components/ui/Text.tsx'
+import AddToCartButton from '$store/islands/AddToCartButton.tsx'
 import { formatPrice } from '$store/sdk/format.ts'
-import type { LoaderReturnType } from '$live/types.ts'
+import { useOffer } from '$store/sdk/useOffer.ts'
 import type { ProductDetailsPage } from 'deco-sites/std/commerce/types.ts'
+import { useId } from 'preact/hooks'
 
 import ProductSelector from './ProductVariantSelector.tsx'
+import BannerCarousel from '../ui/BannerCarousel.tsx'
 
 export interface Props {
 	page: LoaderReturnType<ProductDetailsPage | null>
@@ -38,39 +42,44 @@ function Details({ page }: { page: ProductDetailsPage }) {
 		description,
 		productID,
 		offers,
-		image: images,
+		image: images = [],
 		name,
 		gtin,
 	} = product
-	const { price, listPrice, seller, installments } = useOffer(offers)
-	const [front, back] = images ?? []
+	const { price, listPrice, seller, installments, discount } = useOffer(offers)
+	const id = useId()
 
 	return (
-		<Container class='py-0 sm:py-10'>
+		<Container class='py-6 px-3'>
+			<Breadcrumb
+				itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
+			/>
+
+			<div class='md:hidden'>
+				<h1 class='text-xl text-primary text-center font-black mt-10'>
+					{name}
+				</h1>
+				<img src={asset('/images/stars.png')} class='w-[126px] mx-auto' />
+			</div>
+
 			<div class='flex flex-col gap-4 sm:flex-row sm:gap-10'>
-				{/* Image Gallery */}
-				<div class='flex flex-row overflow-auto snap-x snap-mandatory scroll-smooth sm:gap-2'>
-					{[front, back ?? front].map((img, index) => (
-						<Image
-							style={{ aspectRatio: '360 / 500' }}
-							class='snap-center min-w-[100vw] sm:min-w-0 sm:w-auto sm:h-[600px]'
-							sizes='(max-width: 640px) 100vw, 30vw'
-							src={img.url!}
-							alt={img.alternateName}
-							width={360}
-							height={500}
-							// Preload LCP image for better web vitals
-							preload={index === 0}
-							loading={index === 0 ? 'eager' : 'lazy'}
+				{discount > 0 && (
+					<strong class='w-28 h-7 bg-primary text-white text-sm uppercase flex justify-center items-center absolute -top-7 -left-2 z-10 sm:h-6 sm:text-xs sm:-top-2 sm:left-0'>
+						{discount}% Off
+					</strong>
+				)}
+
+				<div class='flex overflow-x-scroll max-w-[472px] h-[450px] mx-auto'>
+					{(images.map((i) => i.url).filter(Boolean) as string[]).map((i) => (
+						<img
+							src={i}
+							alt={name ?? ''}
 						/>
 					))}
 				</div>
+
 				{/* Product Info */}
 				<div class='flex-auto px-4 sm:px-0'>
-					{/* Breadcrumb */}
-					<Breadcrumb
-						itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
-					/>
 					{/* Code and name */}
 					<div class='mt-4 sm:mt-8'>
 						<div>
@@ -78,9 +87,6 @@ function Details({ page }: { page: ProductDetailsPage }) {
 								Cod. {gtin}
 							</Text>
 						</div>
-						<h1>
-							<Text variant='heading-3'>{name}</Text>
-						</h1>
 					</div>
 					{/* Prices */}
 					<div class='mt-4'>
