@@ -1,16 +1,20 @@
-import Image from 'deco-sites/std/components/Image.tsx'
-import AddToCartButton from '$store/islands/AddToCartButton.tsx'
-import Container from '$store/components/ui/Container.tsx'
-import Text from '$store/components/ui/Text.tsx'
+import { asset } from '$fresh/runtime.ts'
+import type { LoaderReturnType } from '$live/types.ts'
+import Slider from '$store/components/ui/Slider.tsx'
+import SliderControllerJS from '$store/islands/SliderJS.tsx'
 import Breadcrumb from '$store/components/ui/Breadcrumb.tsx'
 import Button from '$store/components/ui/Button.tsx'
+import Container from '$store/components/ui/Container.tsx'
 import Icon from '$store/components/ui/Icon.tsx'
-import { useOffer } from '$store/sdk/useOffer.ts'
+import Text from '$store/components/ui/Text.tsx'
+import AddToCartButton from '$store/islands/AddToCartButton.tsx'
 import { formatPrice } from '$store/sdk/format.ts'
-import type { LoaderReturnType } from '$live/types.ts'
+import { useOffer } from '$store/sdk/useOffer.ts'
 import type { ProductDetailsPage } from 'deco-sites/std/commerce/types.ts'
+import { useId } from 'preact/hooks'
 
 import ProductSelector from './ProductVariantSelector.tsx'
+import BannerCarousel from '../ui/BannerCarousel.tsx'
 
 export interface Props {
 	page: LoaderReturnType<ProductDetailsPage | null>
@@ -38,33 +42,45 @@ function Details({ page, badge }: { page: ProductDetailsPage; badge?: string }) 
 	const {
 		productID,
 		offers,
-		image: images,
+		image: images = [],
 		name,
 		gtin,
 	} = product
-	const { price, listPrice, seller, fullInstallments: installments } = useOffer(offers)
-	const [front, back] = images ?? []
+	const { price, listPrice, seller, fullInstallments: installments, discount } = useOffer(offers)
 
 	return (
 		<Container class='py-0 sm:py-10 mb-16'>
+			<div class='pt-6 px-4'>
+				<Breadcrumb
+					itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
+				/>
+			</div>
+
+			<div class='md:hidden'>
+				<h1 class='text-xl text-primary text-center font-black mt-10'>
+					{name}
+				</h1>
+				<img src={asset('/images/stars.png')} class='w-[126px] mx-auto' />
+			</div>
+
 			<div class='flex flex-col gap-4 sm:flex-row sm:gap-10'>
-				{/* Image Gallery */}
-				<div class='flex flex-row overflow-auto snap-x snap-mandatory scroll-smooth sm:gap-2'>
-					{[front, back ?? front].map((img, index) => (
-						<Image
-							style={{ aspectRatio: '360 / 500' }}
-							class='min-w-[100vw] sm:min-w-0 sm:w-auto sm:h-[600px]'
-							sizes='(max-width: 640px) 100vw, 30vw'
-							src={img.url!}
-							alt={img.alternateName}
-							width={360}
-							height={500}
-							// Preload LCP image for better web vitals
-							preload={index === 0}
-							loading={index === 0 ? 'eager' : 'lazy'}
-						/>
-					))}
+				<div class='max-w-[500px] max-h-[475px] m-auto relative'>
+					{discount > 0 && (
+						<strong class='w-32 h-8 bg-primary text-white text-sm uppercase flex justify-center items-center absolute -left-2 z-10 sm:h-6 sm:text-xs sm:left-0 absolute'>
+							{discount}% Off
+						</strong>
+					)}
+
+					<div class='flex overflow-x-auto'>
+						{(images.map((i) => i.url).filter(Boolean) as string[]).map((i) => (
+							<img
+								src={i}
+								alt={name ?? ''}
+							/>
+						))}
+					</div>
 				</div>
+
 				{/* Product Info */}
 				<div class='flex-auto px-6 sm:px-0 max-w-sm'>
 					{/* Desktop info */}
