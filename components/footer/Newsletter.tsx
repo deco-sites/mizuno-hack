@@ -5,10 +5,11 @@ interface Props {
 
 function Newsletter({ image = '' }: Props) {
 	return (
-		<div class='py-10 bg-bg-300 font-roboto'>
+		<div class='py-10 bg-bg-300 font-sans'>
 			<form class='mx-auto w-full grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] grid-rows-3 max-w-[430px] gap-2.5 text-sm xl:(flex justify-center items-center max-w-7xl)'>
 				<Image
 					src={image}
+					alt='Newsletter'
 					width={320}
 					height={40}
 					class='col-span-2 xl:mr-4'

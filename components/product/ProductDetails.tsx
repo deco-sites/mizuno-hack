@@ -1,20 +1,16 @@
 import { asset } from '$fresh/runtime.ts'
 import type { LoaderReturnType } from '$live/types.ts'
-import Slider from '$store/components/ui/Slider.tsx'
-import SliderControllerJS from '$store/islands/SliderJS.tsx'
 import Breadcrumb from '$store/components/ui/Breadcrumb.tsx'
 import Button from '$store/components/ui/Button.tsx'
-import Container from '$store/components/ui/Container.tsx'
 import Icon from '$store/components/ui/Icon.tsx'
 import Text from '$store/components/ui/Text.tsx'
 import AddToCartButton from '$store/islands/AddToCartButton.tsx'
 import { formatPrice } from '$store/sdk/format.ts'
 import { useOffer } from '$store/sdk/useOffer.ts'
 import type { ProductDetailsPage } from 'deco-sites/std/commerce/types.ts'
-import { useId } from 'preact/hooks'
+import Image from 'deco-sites/std/components/Image.tsx'
 
 import ProductSelector from './ProductVariantSelector.tsx'
-import BannerCarousel from '../ui/BannerCarousel.tsx'
 
 export interface Props {
 	page: LoaderReturnType<ProductDetailsPage | null>
@@ -60,7 +56,7 @@ function Details({ page, badge }: { page: ProductDetailsPage; badge?: string }) 
 				<h1 class='text-xl text-primary text-center font-black mt-10'>
 					{name}
 				</h1>
-				<img src={asset('/images/stars.png')} class='w-[126px] mx-auto' />
+				<img src={asset('/images/stars.png')} alt='Nota do produto' width={126} height={30} class='mx-auto' />
 			</div>
 
 			<div class='flex flex-col gap-4 sm:flex-row sm:gap-10'>

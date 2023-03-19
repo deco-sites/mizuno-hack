@@ -1,5 +1,5 @@
-import Text from '$store/components/ui/Text.tsx'
-import type { BreadcrumbList } from 'deco-sites/std/commerce/types.ts'
+import Text from '$store/components/ui/Text.tsx';
+import type { BreadcrumbList } from 'deco-sites/std/commerce/types.ts';
 
 interface Props {
 	itemListElement: BreadcrumbList['itemListElement']

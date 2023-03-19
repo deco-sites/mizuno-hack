@@ -256,7 +256,7 @@ function Desktop({ leftLinks, sections, copyright }: Omit<Props, 'newsletter'>) 
 
 export default function Footer({ leftLinks = [], sections = [], copyright, newsletter }: Props) {
 	return (
-		<div class='font-roboto'>
+		<div class='font-sans'>
 			<Newsletter image={newsletter.image} />
 			<Desktop leftLinks={leftLinks} sections={sections} copyright={copyright} />
 			<Mobile
