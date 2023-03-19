@@ -1,31 +1,44 @@
-import Text from "$store/components/ui/Text.tsx";
-
-function Newsletter() {
-  return (
-    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-20">
-      <div class="flex flex-col gap-2 max-w-[400px]">
-        <Text variant="heading-2" tone="default-inverse">
-          Cadastre-se
-        </Text>
-        <Text variant="caption" tone="default-inverse">
-          Fique por dentro das novidades e ganhe 15% de desconto na primeira
-          compra. Para mais informações clique aqui.
-        </Text>
-      </div>
-      <form class="flex flex-row items-center gap-2 font-body text-body w-full sm:w-[408px]">
-        <input
-          class="py-2 px-3 flex-grow bg-footer rounded text-default-inverse border-1 border-default"
-          placeholder="Seu e-mail"
-        />
-        <button
-          class="py-2 px-3 bg-interactive-inverse rounded"
-          type="bgutton" // prevent form's default behavior
-        >
-          Cadastrar
-        </button>
-      </form>
-    </div>
-  );
+import Image from 'deco-sites/std/components/Image.tsx'
+interface Props {
+	image: string
 }
 
-export default Newsletter;
+function Newsletter({ image = '' }: Props) {
+	return (
+		<div class='py-10 bg-bg-300 font-roboto'>
+			<form class='mx-auto w-full grid grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] grid-rows-3 max-w-[430px] gap-2.5 text-sm xl:(flex justify-center items-center max-w-7xl)'>
+				<Image
+					src={image}
+					width={320}
+					height={40}
+					class='col-span-2 xl:mr-4'
+				/>
+
+				<input
+					type='text'
+					placeholder='Digite aqui seu nome'
+					class='h-11 px-4 bg-bg-200 text-input-text text-[.82rem] w-full outline-none placeholder::text-input-text xl:(w-[220px] h-8 text-[10px])'
+				/>
+				<input
+					type='email'
+					placeholder='Digite aqui seu email'
+					class='row-start-3 h-11 px-4 bg-bg-200 text-input-text text-[.82rem] outline-none placeholder::text-input-text xl:(w-[220px] h-8 text-[10px])'
+				/>
+				<select class='h-11 px-4 bg-bg-200 text-input-text max-w-[174px] text-[.82rem] w-full outline-none xl:(w-[160px] h-8 text-[10px])'>
+					<option disabled selected>Selecione seu gênero</option>
+					<option>Masculino</option>
+					<option>Feminino</option>
+					<option>Prefiro não dizer</option>
+				</select>
+				<button
+					type='button'
+					class='bg-light-blue h-11 px-4 font-black text(white uppercase sm) max-w-[174px] text-[.82rem] w-full xl:(w-[154px] text-[10px] h-8)'
+				>
+					Receber novidades
+				</button>
+			</form>
+		</div>
+	)
+}
+
+export default Newsletter

@@ -4,31 +4,31 @@
  * this issue, use animations and keyframes intead of twind's animation
  * function.
  */
-import type { Options } from "$fresh/plugins/twind.ts";
+import type { Options } from '$fresh/plugins/twind.ts'
 
 const gridCols = ([arg]: string[]) => {
-  const template = Number.isInteger(Number(arg))
-    ? `repeat(${arg}, minmax(0, 1fr))`
-    : arg
-    ? arg.replace(/(^\[)|(\])$/g, "").replace(/_/g, " ")
-    : arg;
+	const template = Number.isInteger(Number(arg))
+		? `repeat(${arg}, minmax(0, 1fr))`
+		: arg
+		? arg.replace(/(^\[)|(\])$/g, '').replace(/_/g, ' ')
+		: arg
 
-  return {
-    "grid-template-columns": template,
-  };
-};
+	return {
+		'grid-template-columns': template,
+	}
+}
 
 const gridRows = ([arg]: string[]) => {
-  const template = Number.isInteger(Number(arg))
-    ? `repeat(${arg}, minmax(0, 1fr))`
-    : arg
-    ? arg.replace(/(^\[)|(\])$/g, "").replace(/_/g, " ")
-    : arg;
+	const template = Number.isInteger(Number(arg))
+		? `repeat(${arg}, minmax(0, 1fr))`
+		: arg
+		? arg.replace(/(^\[)|(\])$/g, '').replace(/_/g, ' ')
+		: arg
 
-  return {
-    "grid-template-rows": template,
-  };
-};
+	return {
+		'grid-template-rows': template,
+	}
+}
 
 const options: Omit<Options, "selfURL"> = {
   theme: {
@@ -45,6 +45,14 @@ const options: Omit<Options, "selfURL"> = {
           200: "#ebebeb",
           300: "#e6e5e5",
         },
+        'bg': {
+					'100': '#ffffff',
+					'200': '#e5e5e5',
+					'300': '#cccccc',
+				},
+				'input-text': '#5B5B5B',
+				'dark-blue': '#001489',
+				'light-blue': '#009CDE',
       },
       fontFamily: {
         "sans": ["Roboto", "sans-serif"],
@@ -72,10 +80,12 @@ const options: Omit<Options, "selfURL"> = {
         "2xl": "2rem",
         "3xl": "2.5rem",
         "4xl": "3rem",
+        'footer-link': ['13px', '16px'],
       },
       outline: {
         none: ["none"],
       },
+
       // "fontFamily": {
       //   "roboto": ["Roboto", "sans-serif"],
       // },
@@ -242,4 +252,4 @@ const options: Omit<Options, "selfURL"> = {
   },
 };
 
-export default options;
+export default options

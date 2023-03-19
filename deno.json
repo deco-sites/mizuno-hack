@@ -9,18 +9,20 @@
   },
   "lint": {
     "files": {
-      "exclude": [
-        "static/",
-        "README.md"
-      ]
+      "exclude": ["static/", "README.md"]
     }
   },
   "fmt": {
     "files": {
-      "exclude": [
-        "static/",
-        "README.md"
-      ]
+      "exclude": ["static/", "README.md"]
+    },
+
+    "options": {
+      "singleQuote": true,
+      "indentWidth": 4,
+      "lineWidth": 100,
+      "useTabs": true,
+      "semiColons": false
     }
   },
   "importMap": "./import_map.json",
