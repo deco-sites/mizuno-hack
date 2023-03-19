@@ -51,7 +51,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						src={phone}
 						width={256}
 						height={320}
-						loading='lazy'
+						// loading='lazy'
 					/>
 
 					<Source
@@ -60,17 +60,16 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						src={tablet}
 						width={960}
 						height={350}
-						loading='lazy'
+						// loading='lazy'
 					/>
 
-					{
-						/* <Source
+					<Source
 						media='(min-width: 1024px)'
 						// fetchPriority={lcp ? 'high' : 'auto'}
 						src={desktop}
 						width={1370}
 						height={500}
-						loading='lazy'
+						// loading='lazy'
 					/>
 
 					<Source
@@ -79,13 +78,12 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						src={desktop}
 						width={1920}
 						height={700}
-						loading='lazy'
-					/> */
-					}
+						// loading='lazy'
+					/>
 
 					<img
 						class='w-full object-cover sm:max-h-[700px] 3xl:max-h-[1000px]'
-						loading={lcp ? 'eager' : 'lazy'}
+						// loading={lcp ? 'eager' : 'lazy'}
 						src={desktop}
 						alt={alt}
 					/>

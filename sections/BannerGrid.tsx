@@ -32,40 +32,40 @@ export default function BannerGrid({ banners, itemsPerRow }: Props) {
 		>
 			{banners.map((banner) => (
 				<a href={banner.href ?? '#'}>
-					<Picture class='w-full' loading='lazy'>
+					<Picture class='w-full'>
 						<Source
 							media='(max-width: 640px)'
-							fetchPriority='low'
+							// fetchPriority='low'
 							src={banner.image.mobile}
 							width={360}
 							height={450}
-							loading='lazy'
+							// loading='lazy'
 						/>
 
 						<Source
 							media='(max-width: 1024px)'
-							fetchPriority='low'
+							// fetchPriority='low'
 							src={banner.image.mobile}
 							width={640}
 							height={800}
-							loading='lazy'
+							// loading='lazy'
 						/>
 
 						<Source
 							media='(min-width: 1024px)'
-							fetchPriority='low'
+							// fetchPriority='low'
 							src={banner.image.desktop}
 							width={690}
 							height={450}
-							loading='lazy'
+							// loading='lazy'
 						/>
 
 						<img
 							class='w-full'
 							src={banner.image.desktop}
 							alt={banner.alt}
-							decoding='async'
-							loading='lazy'
+							// decoding='async'
+							// loading='lazy'
 						/>
 					</Picture>
 				</a>

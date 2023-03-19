@@ -49,8 +49,8 @@ function ProductCard({ product, preload }: Props) {
 					alt={front.alternateName}
 					width={150}
 					height={150}
-					preload={preload}
-					loading='lazy'
+					// preload={preload}
+					// loading='lazy'
 					sizes='(max-width: 640px) 50vw, 20vw'
 				/>
 
