@@ -26,7 +26,7 @@ function MenuItem({ item, level = 0 }: { item: INavItem; level?: number }) {
     <li>
       <div
         class={`transition-colors duration-300 overflow-hidden ${
-          level === 0 ? `${open.value ? "bg-100" : "bg-white"} px-4` : ""
+          level === 0 ? `${open.value ? "bg-gray-100" : "bg-white"} px-4` : ""
         }`}
       >
         <div
