@@ -92,14 +92,14 @@ function Navbar({ items, searchbar, logo }: NavbarProps) {
 					>
 						{items.map((item) => <NavItem item={item} />)}
 					</ul>
-					<div class='flex-none flex items-center justify-end gap-2'>
+					<div class='flex-none flex items-center justify-end'>
 						<HeaderSearchInput searchbar={searchbar} />
 						<Button
 							as='a'
 							variant='icon'
 							href='/favoritos'
 							aria-label='Favoritos'
-							class='text-black p-0 ml-3'
+							class='text-black ml-5'
 						>
 							<Icon
 								id='Heart'
@@ -115,7 +115,7 @@ function Navbar({ items, searchbar, logo }: NavbarProps) {
 							variant='icon'
 							href='/login'
 							aria-label='Log in'
-							class='text-black p-0'
+							class='text-black'
 						>
 							<Icon id='User' width={28} height={28} />
 						</Button>

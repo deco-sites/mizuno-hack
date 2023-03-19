@@ -40,8 +40,6 @@ const Modal = ({
   const ref = useRef<HTMLDialogElement>(null);
   const variant = styles[mode];
 
-  console.log(typeof title);
-
   useEffect(() => {
     if (ref.current?.open === true && open === false) {
       document.getElementsByTagName("body").item(0)?.removeAttribute(

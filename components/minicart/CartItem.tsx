@@ -22,6 +22,7 @@ function CartItem({ index }: Props) {
     listPrice,
     name,
     quantity,
+
   } = item;
 
   const isGift = sellingPrice < 0.01;
@@ -31,25 +32,18 @@ function CartItem({ index }: Props) {
       <Image
         src={imageUrl}
         alt={skuName}
-        width={108}
-        height={150}
+        width={70}
+        height={70}
         class="object-cover object-center"
       />
       <div class="flex-grow">
-        <Text variant="body">
+        <Text variant="body" class="font-bold text-secondary text-base block leading-4">
           {name}
         </Text>
-        <div class="flex items-center gap-2">
-          <Text class="line-through" tone="subdued" variant="list-price">
-            {formatPrice(listPrice / 100, currencyCode!, locale)}
+        <div class="mt-2 mb-4 max-w-min flex items-center">
+          <Text class="text-sm text-uppercase">
+            Quantidade:
           </Text>
-          <Text tone="price" variant="caption">
-            {isGift
-              ? "Grátis"
-              : formatPrice(sellingPrice / 100, currencyCode!, locale)}
-          </Text>
-        </div>
-        <div class="mt-6 max-w-min">
           <QuantitySelector
             disabled={loading.value || isGift}
             quantity={quantity}
@@ -57,14 +51,25 @@ function CartItem({ index }: Props) {
               updateItems({ orderItems: [{ index, quantity }] })}
           />
         </div>
+        <div class="flex flex-col gap-1">
+          <Text class="line-through text-xs leading-[1] block" tone="subdued" variant="list-price">
+            de {formatPrice(listPrice / 100, currencyCode!, locale)}
+          </Text>
+          <Text tone="price" class="text-[1.1rem] font-black leading-[1] block" variant="caption">
+            {isGift
+              ? "Grátis"
+              : `por ${formatPrice(sellingPrice / 100, currencyCode!, locale)}`}
+          </Text>
+        </div>
       </div>
       <Button
         onClick={() => updateItems({ orderItems: [{ index, quantity: 0 }] })}
         disabled={loading.value || isGift}
         loading={loading.value}
         variant="icon"
+        class="w-6 h-6 p-0"
       >
-        <Icon id="Trash" width={20} height={20} />
+        <Icon id="Trash" width={18} height={18} />
       </Button>
     </div>
   );

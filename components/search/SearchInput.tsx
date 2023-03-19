@@ -86,7 +86,7 @@ export default function SearchInput({
       <input
         ref={searchInputRef}
         id="search-input"
-        class="flex-grow outline-none bg-transparent text-primary placeholder-secondary text-[14px] font-medium lg:(h-4 text-xs)"
+        class="lg:(h-4 text-xs) flex-grow outline-none bg-transparent text-primary placeholder-secondary text-[14px] font-medium"
         name={name}
         defaultValue={query}
         onInput={(e) => {
