@@ -87,7 +87,7 @@ function Navbar({ items, searchbar, logo }: NavbarProps) {
 					</div>
 					<ul
 						class={`flex-auto grid h-full ${
-							items.length > 4 ? `grid-cols-${items.length + 1}` : 'grid-cols-5'
+							items.length > 4 ? `grid-cols-${items.length}` : 'grid-cols-5'
 						}`}
 					>
 						{items.map((item) => <NavItem item={item} />)}
