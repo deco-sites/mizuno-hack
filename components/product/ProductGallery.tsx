@@ -22,7 +22,9 @@ function Gallery({ page }: { page: ProductListingPage }) {
 		<div class='px-5 lg:max-w-lg lg:mx-auto'>
 			<div class='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 sm:gap-6'>
 				{page.products.map((product, index) => (
-					<ProductCard product={product} preload={index === 0} />
+					<div class='py-6 px-2.5 sm:px-0'>
+						<ProductCard product={product} preload={index === 0} />
+					</div>
 				))}
 			</div>
 
