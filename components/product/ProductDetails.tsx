@@ -56,7 +56,13 @@ function Details({ page, badge }: { page: ProductDetailsPage; badge?: string }) 
 				<h1 class='text-xl text-primary text-center font-black mt-10'>
 					{name}
 				</h1>
-				<img src={asset('/images/stars.png')} alt='Nota do produto' width={126} height={30} class='mx-auto' />
+				<img
+					src={asset('/images/stars.png')}
+					alt='Nota do produto'
+					width={126}
+					height={30}
+					class='mx-auto'
+				/>
 			</div>
 
 			<div class='flex flex-col gap-4 sm:flex-row sm:gap-10'>

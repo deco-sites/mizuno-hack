@@ -45,16 +45,17 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 		<div class='min-w-[100vw] overflow-y-hidden relative'>
 			<a href={href ?? '#'}>
 				<Picture class='w-full' preload={lcp}>
-					{
-						/* <Source
+					<Source
 						media='(max-width: 639px)'
-						// fetchPriority={lcp ? 'high' : 'auto'}
+						fetchPriority={lcp ? 'high' : 'auto'}
 						src={phone}
 						width={256}
 						height={320}
-						// loading='lazy'
+						loading={lcp ? 'eager' : 'lazy'}
 					/>
 
+					{
+						/*
 					<Source
 						media='(max-width: 1023px)'
 						// fetchPriority={lcp ? 'high' : 'auto'}
@@ -85,7 +86,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 
 					<img
 						class='w-full object-cover sm:max-h-[700px] 3xl:max-h-[1000px]'
-						// loading={lcp ? 'eager' : 'lazy'}
+						loading={lcp ? 'eager' : 'lazy'}
 						src={desktop}
 						alt={alt}
 					/>
