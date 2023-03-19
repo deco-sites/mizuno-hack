@@ -63,7 +63,8 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						loading='lazy'
 					/>
 
-					<Source
+					{
+						/* <Source
 						media='(min-width: 1024px)'
 						// fetchPriority={lcp ? 'high' : 'auto'}
 						src={desktop}
@@ -79,7 +80,8 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						width={1920}
 						height={700}
 						loading='lazy'
-					/>
+					/> */
+					}
 
 					<img
 						class='w-full object-cover sm:max-h-[700px] 3xl:max-h-[1000px]'
