@@ -51,6 +51,7 @@ export type AvailableIcons =
 	| 'FilterPlus'
 	| 'Mail'
 	| 'Coin'
+	| 'Mic'
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
 	/**

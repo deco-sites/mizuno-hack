@@ -10,11 +10,9 @@ import Icon from '$store/components/ui/Icon.tsx'
 
 const Menu = lazy(() => import('$store/components/header/Menu.tsx'))
 const Cart = lazy(() => import('$store/components/minicart/Cart.tsx'))
-const Searchbar = lazy(() => import('$store/components/search/Searchbar.tsx'))
 
 interface Props {
 	menu: MenuProps
-	searchbar?: SearchbarProps
 }
 
 const MenuTitle = () => {
@@ -62,8 +60,8 @@ const CartTitle = () => {
 	)
 }
 
-function Modals({ menu, searchbar }: Props) {
-	const { displayCart, displayMenu, displaySearchbar } = useUI()
+function Modals({ menu }: Props) {
+	const { displayCart, displayMenu } = useUI()
 
 	return (
 		<>

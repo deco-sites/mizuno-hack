@@ -1,10 +1,12 @@
-import type { Product, Suggestion } from 'deco-sites/std/commerce/types.ts'
+import type { Product } from 'deco-sites/std/commerce/types.ts'
 import type { ClientConfigVTEX } from 'deco-sites/std/functions/vtexConfig.ts'
-import useAutocomplete from 'deco-sites/std/commerce/vtex/hooks/useAutocomplete.ts'
-import { useEffect, useRef } from 'preact/hooks'
 import Icon from '$store/components/ui/Icon.tsx'
-import Text from '$store/components/ui/Text.tsx'
 import Button from '$store/components/ui/Button.tsx'
+
+export interface Suggestion {
+	term?: string
+	href?: string
+}
 
 // Editable props
 export interface EditableProps {
@@ -30,6 +32,11 @@ export interface EditableProps {
 	 * TODO: Receive querystring from parameter in the server-side
 	 */
 	query?: string
+
+	/**
+	 * @title Suggestions
+	 */
+	suggestions?: Suggestion[]
 }
 
 export type Props = EditableProps & {
@@ -38,7 +45,6 @@ export type Props = EditableProps & {
 	 * @description Product suggestions displayed on searchs
 	 */
 	products?: Product[] | null
-	suggestions?: Suggestion | null
 
 	/** used for autocomplete */
 	configVTEX?: ClientConfigVTEX
@@ -52,92 +58,78 @@ export default function SearchInput({
 	name = 'q',
 	query,
 	products,
-	suggestions: _suggestions,
+	suggestions,
 	configVTEX,
 	variant = 'mobile',
 }: Props) {
-	const searches = _suggestions?.searches
-	const searchInputRef = useRef<HTMLInputElement>(null)
-	const { setSearch, suggestions } = useAutocomplete({
-		configVTEX,
-	})
-
-	useEffect(() => {
-		if (!searchInputRef.current) {
-			return
-		}
-
-		searchInputRef.current.focus()
-	}, [])
-
-	// const hasSuggestions = !!suggestions.value;
-	// const emptySuggestions = suggestions.value?.searches?.length === 0;
-	// const _products = suggestions.value?.products &&
-	//     suggestions.value?.products?.length !== 0
-	//   ? suggestions.value.products
-	//   : products;
-
 	return (
-		<form
-			id='searchbar'
-			action={action}
-			class='lg:(border-b-2 border-secondary px-[0px] py-[5px]) flex-grow flex px-5'
-		>
-			<input
-				ref={searchInputRef}
-				id='search-input'
-				class='lg:(h-4 text-xs) flex-grow outline-none bg-transparent text-primary placeholder-secondary text-[14px] font-medium'
-				name={name}
-				defaultValue={query}
-				onInput={(e) => {
-					const value = e.currentTarget.value
-
-					setSearch(value)
-				}}
-				placeholder={placeholder}
-				role='combobox'
-				aria-controls='search-suggestion'
-				autocomplete='off'
-			/>
-
-			{
-				/* <button
-        type="button"
-        aria-label="Clean search"
-        class="focus:outline-none"
-        tabIndex={-1}
-        onClick={(e) => {
-          e.stopPropagation();
-          if (searchInputRef.current === null) return;
-
-          searchInputRef.current.value = "";
-          setSearch("");
-        }}
-      >
-        <Text variant="caption" tone="default">limpar</Text>
-      </button> */
-			}
-
-			<Button
-				variant='icon'
-				aria-label='Search'
-				htmlFor='searchbar'
-				tabIndex={-1}
-				class='lg:w-[18px] lg:h-[18px] w-[20px] h-[20px] p-0'
+		<div class='flex relative group lg:(h-full items-center)'>
+			<form
+				id='searchbar'
+				action={action}
+				class='lg:(border-b-2 border-secondary px-[0px] py-[5px] h-[30px]) flex-grow flex px-5'
 			>
 				<Icon
-					class='text-secondary lg:hidden'
-					id='MagnifyingGlass'
-					width={20}
-					height={20}
+					id='Mic'
+					width={14}
+					height={14}
+					class="text-secondary mr-1 h-full cursor-pointer"
+					strokeWidth={0}
 				/>
-				<Icon
-					class='text-secondary hidden lg:block'
-					id='MagnifyingGlass'
-					width={18}
-					height={18}
+				<input
+					id='search-input'
+					class='lg:(h-4 text-xs) flex-grow outline-none bg-transparent text-primary placeholder-secondary text-[14px] font-medium'
+					name={name}
+					defaultValue={query}
+					// onInput={(e) => {
+					// 	const value = e.currentTarget.value
+
+					// 	setSearch(value)
+					// }}
+					placeholder={placeholder}
+					role='combobox'
+					aria-controls='search-suggestion'
+					autocomplete='off'
 				/>
-			</Button>
-		</form>
+
+				<Button
+					variant='icon'
+					aria-label='Search'
+					htmlFor='searchbar'
+					tabIndex={-1}
+					class='lg:w-[18px] lg:h-[18px] w-[20px] h-[20px] p-0'
+				>
+					<Icon
+						class='text-secondary lg:hidden'
+						id='MagnifyingGlass'
+						width={20}
+						height={20}
+					/>
+					<Icon
+						class='text-secondary hidden lg:block'
+						id='MagnifyingGlass'
+						width={18}
+						height={18}
+					/>
+				</Button>
+			</form>
+			{!!suggestions?.length && (
+				<div class='invisible p-2 flex flex-col opacity-0 transition-opacity duration-300 group-hover:(visible opacity-100) absolute top-full left-0 bg-white z-50 w-full border-1 border-gray-300'>
+					<h4 class='text-sm text-uppercase font-bold mb-2'>Mais buscados</h4>
+					<ul class='flex flex-col gap-3'>
+						{suggestions.map(({ href, term }, index) => (
+							<li class='flex group-x' key={term}>
+								<a class='flex gap-2 items-center' href={href}>
+									<div class='bg-gray-200 flex items-center justify-center w-8 h-8 rounded group-x-hover:bg-gray-300 transition-colors duration-300'>
+										{index + 1}
+									</div>
+									{term}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
+		</div>
 	)
 }

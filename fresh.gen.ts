@@ -547,6 +547,10 @@ const manifest: DecoManifest = {
 											'type': 'string',
 											'const': 'Coin',
 										},
+										{
+											'type': 'string',
+											'const': 'Mic',
+										},
 									],
 									'title': 'Icon',
 									'description': 'Image src',
@@ -736,6 +740,31 @@ const manifest: DecoManifest = {
 								],
 								'title': 'Query',
 							},
+							'suggestions': {
+								'type': 'array',
+								'items': {
+									'title': 'Suggestion',
+									'type': 'object',
+									'properties': {
+										'term': {
+											'type': [
+												'string',
+												'null',
+											],
+											'title': 'Term',
+										},
+										'href': {
+											'type': [
+												'string',
+												'null',
+											],
+											'title': 'Href',
+										},
+									},
+									'required': [],
+								},
+								'title': 'Suggestions',
+							},
 						},
 						'required': [],
 					},
@@ -829,12 +858,6 @@ const manifest: DecoManifest = {
 						'type': 'string',
 						'title': 'Product suggestions',
 						'description': 'Product suggestions displayed on search',
-					},
-					'suggestions': {
-						'$id': '664f9b3b60b4a75294c340d8218b4ad76821fd58',
-						'format': 'live-function',
-						'type': 'string',
-						'title': 'Enable Top Search terms',
 					},
 					'configVTEX': {
 						'$id': '4a94f4ff0e8e4441f26651aaed22f0df82f38c93',

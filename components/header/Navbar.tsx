@@ -6,7 +6,7 @@ import NavItem from './NavItem.tsx'
 import { navbarHeight } from './constants.ts'
 import type { INavItem } from './NavItem.tsx'
 import HeaderSearchInput from '$store/islands/HeaderSearchInput.tsx'
-import type { Props as SearchbarProps } from '$store/components/search/Searchbar.tsx'
+import type { Props as SearchInputProps } from '$store/components/search/SearchInput.tsx'
 import Image from 'deco-sites/std/components/Image.tsx'
 import type { Image as ImageType } from 'deco-sites/std/components/types.ts'
 import Container from '$store/components/ui/Container.tsx'
@@ -26,7 +26,7 @@ export interface LogoProps {
 export interface NavbarProps {
 	logo: LogoProps
 	items: INavItem[]
-	searchbar: SearchbarProps
+	searchbar: SearchInputProps
 }
 
 function Navbar({ items, searchbar, logo }: NavbarProps) {
@@ -92,7 +92,7 @@ function Navbar({ items, searchbar, logo }: NavbarProps) {
 					>
 						{items.map((item) => <NavItem item={item} />)}
 					</ul>
-					<div class='flex-none flex items-center justify-end'>
+					<div class='flex-none flex items-center justify-end h-full'>
 						<HeaderSearchInput searchbar={searchbar} />
 						<Button
 							as='a'
