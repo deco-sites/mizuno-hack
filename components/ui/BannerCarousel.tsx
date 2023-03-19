@@ -54,35 +54,14 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 						loading={lcp ? 'eager' : 'lazy'}
 					/>
 
-					{
-						/*
 					<Source
 						media='(max-width: 1023px)'
-						// fetchPriority={lcp ? 'high' : 'auto'}
+						fetchPriority={lcp ? 'high' : 'auto'}
 						src={tablet}
 						width={960}
 						height={350}
-						// loading='lazy'
+						loading={lcp ? 'eager' : 'lazy'}
 					/>
-
-					<Source
-						media='(min-width: 1024px)'
-						// fetchPriority={lcp ? 'high' : 'auto'}
-						src={desktop}
-						width={1370}
-						height={500}
-						// loading='lazy'
-					/>
-
-					<Source
-						media='(min-width: 1920px)'
-						// fetchPriority={lcp ? 'high' : 'auto'}
-						src={desktop}
-						width={1920}
-						height={700}
-						// loading='lazy'
-					/> */
-					}
 
 					<img
 						class='w-full object-cover sm:max-h-[700px] 3xl:max-h-[1000px]'
