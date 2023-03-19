@@ -49,7 +49,7 @@ function Details({ page, badge }: { page: ProductDetailsPage; badge?: string }) 
 	const { price, listPrice, seller, fullInstallments: installments, discount } = useOffer(offers)
 
 	return (
-		<Container class='py-0 sm:py-10 mb-16'>
+		<div class='py-0 sm:py-10 mb-16 max-w-6xl mx-auto'>
 			<div class='pt-6 px-4'>
 				<Breadcrumb
 					itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
@@ -186,7 +186,7 @@ function Details({ page, badge }: { page: ProductDetailsPage; badge?: string }) 
 					}
 				</div>
 			</div>
-		</Container>
+		</div>
 	)
 }
 
