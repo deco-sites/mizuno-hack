@@ -94,6 +94,7 @@ function Dots({ images }: Props) {
 				{images?.map((_, index) => (
 					<li class='leading-[0]'>
 						<button
+							type='button'
 							class='w-3 h-3 bg-black opacity-75 rounded-full focus:outline-none disabled:opacity-100'
 							data-dot={index}
 							aria-label={`go to slider item ${index}`}

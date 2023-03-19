@@ -54,7 +54,7 @@ function ProductCard({ product, preload }: Props) {
 					sizes='(max-width: 640px) 50vw, 20vw'
 				/>
 
-				<button class='absolute -top-2 right-0.5 z-10'>
+				<button type='button' class='absolute -top-2 right-0.5 z-10'>
 					<Icon
 						id='Heart'
 						fill='transparent'

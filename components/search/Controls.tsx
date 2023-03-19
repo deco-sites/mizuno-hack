@@ -30,6 +30,7 @@ function Controls({ page }: { page: ProductListingPage }) {
 
 				<div class='flex flex-row items-center justify-between sm:gap-2'>
 					<button
+						type='button'
 						class='p-2 bg-tertiary text-white text-xs font-bold uppercase flex flex-shrink-0 justify-center items-center gap-2'
 						onClick={() => {
 							open.value = true
