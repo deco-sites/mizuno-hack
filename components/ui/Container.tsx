@@ -1,9 +1,9 @@
-import type { JSX } from "preact";
+import type { JSX } from 'preact'
 
-type Props = JSX.IntrinsicElements["div"];
+type Props = JSX.IntrinsicElements['div']
 
-function Container({ class: _class = "", ...props }: Props) {
-  return <div class={`max-w-[1410px] mx-auto ${_class}`} {...props} />;
+function Container({ class: _class = '', ...props }: Props) {
+	return <div class={`max-w-[1410px] mx-auto ${_class}`} {...props} />
 }
 
-export default Container;
+export default Container

@@ -1,88 +1,88 @@
-import Modals from "$store/islands/HeaderModals.tsx";
-import type { Image } from "deco-sites/std/components/types.ts";
-import type { EditableProps as SearchbarProps } from "$store/components/search/Searchbar.tsx";
-import type { LoaderReturnType } from "$live/types.ts";
-import type { Product, Suggestion } from "deco-sites/std/commerce/types.ts";
-import type { ClientConfigVTEX } from "deco-sites/std/functions/vtexConfig.ts";
+import Modals from '$store/islands/HeaderModals.tsx'
+import type { Image } from 'deco-sites/std/components/types.ts'
+import type { EditableProps as SearchbarProps } from '$store/components/search/Searchbar.tsx'
+import type { LoaderReturnType } from '$live/types.ts'
+import type { Product, Suggestion } from 'deco-sites/std/commerce/types.ts'
+import type { ClientConfigVTEX } from 'deco-sites/std/functions/vtexConfig.ts'
 
-import Alert, { AlertMessage } from "./Alert.tsx";
-import Navbar, { LogoProps } from "./Navbar.tsx";
-import { headerHeight, mobileHeaderHeight } from "./constants.ts";
+import Alert, { AlertMessage } from './Alert.tsx'
+import Navbar, { LogoProps } from './Navbar.tsx'
+import { headerHeight, mobileHeaderHeight } from './constants.ts'
 
 export interface NavItem {
-  label: string;
-  href: string;
-  children?: Array<{
-    label: string;
-    href: string;
-    children?: Array<{
-      label: string;
-      href: string;
-    }>;
-  }>;
-  image?: {
-    src?: Image;
-    alt?: string;
-  };
+	label: string
+	href: string
+	children?: Array<{
+		label: string
+		href: string
+		children?: Array<{
+			label: string
+			href: string
+		}>
+	}>
+	image?: {
+		src?: Image
+		alt?: string
+	}
 }
 
 export interface Props {
-  alerts: AlertMessage[];
-  /** @title Search Bar */
-  searchbar?: SearchbarProps;
-  /**
-   * @title Navigation items
-   * @description Navigation items used both on mobile and desktop menus
-   */
-  navItems?: NavItem[];
+	alerts: AlertMessage[]
+	/** @title Search Bar */
+	searchbar?: SearchbarProps
+	/**
+	 * @title Navigation items
+	 * @description Navigation items used both on mobile and desktop menus
+	 */
+	navItems?: NavItem[]
 
-  /**
-   * @title Product suggestions
-   * @description Product suggestions displayed on search
-   */
-  products?: LoaderReturnType<Product[] | null>;
+	/**
+	 * @title Product suggestions
+	 * @description Product suggestions displayed on search
+	 */
+	products?: LoaderReturnType<Product[] | null>
 
-  /**
-   * @title Enable Top Search terms
-   */
-  suggestions?: LoaderReturnType<Suggestion | null>;
+	/**
+	 * @title Enable Top Search terms
+	 */
+	suggestions?: LoaderReturnType<Suggestion | null>
 
-  /**
-   * @description vtex config used for search autocompletion;
-   */
-  configVTEX?: LoaderReturnType<ClientConfigVTEX>;
+	/**
+	 * @description vtex config used for search autocompletion;
+	 */
+	configVTEX?: LoaderReturnType<ClientConfigVTEX>
 
-  /**
-   * @description Logo
-   */
-  logo: LogoProps;
+	/**
+	 * @description Logo
+	 */
+	logo: LogoProps
 }
 
 function Header(
-  {
-    alerts,
-    searchbar: _searchbar,
-    products,
-    navItems = [],
-    suggestions,
-    configVTEX,
-    logo,
-  }: Props,
+	{
+		alerts,
+		searchbar: _searchbar,
+		products,
+		navItems = [],
+		suggestions,
+		configVTEX,
+		logo,
+	}: Props,
 ) {
-  const searchbar = { ..._searchbar, products, suggestions, configVTEX };
-  return (
-    <header class={`lg:h-[${headerHeight}] h-[${mobileHeaderHeight}]`}>
-      <div class="bg-white fixed w-full z-50">
-        <Alert alerts={alerts} />
-        <Navbar items={navItems} searchbar={searchbar} logo={logo} />
-      </div>
+	const searchbar = { ..._searchbar, products, suggestions, configVTEX }
+	return (
+		<header class={`lg:h-[${headerHeight}] h-[${mobileHeaderHeight}]`}>
+			<div class='bg-white fixed w-full z-50'>
+				<Alert alerts={alerts} />
+				<Navbar items={navItems} searchbar={searchbar} logo={logo} />
+			</div>
 
-      <Modals
-        menu={{ items: navItems }}
-        searchbar={searchbar}
-      />
-    </header>
-  );
+			<Modals
+				menu={{ items: navItems }}
+				searchbar={searchbar}
+			/>
+		</header>
+	)
 }
 
-export default Header;
+export default Header
