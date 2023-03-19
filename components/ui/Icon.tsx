@@ -48,6 +48,7 @@ export type AvailableIcons =
 	| 'FooterVtex'
 	| 'Newsletter'
 	| 'WishlistHeart'
+	| 'FilterPlus'
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
 	/**

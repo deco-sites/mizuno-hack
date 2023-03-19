@@ -1,5 +1,4 @@
 import { useMemo } from 'preact/hooks'
-import Text from '$store/components/ui/Text.tsx'
 import Icon from '$store/components/ui/Icon.tsx'
 import type { JSX } from 'preact'
 
@@ -37,18 +36,28 @@ function Sort() {
 	const sort = useSort()
 
 	return (
-		<select
-			id='sort'
-			name='sort'
-			onInput={applySort}
-			class='w-min h-[36px] px-1 rounded m-2 text-button font-button text-default hover:bg-hover cursor-pointer outline-none'
-		>
-			{options.map(({ value, label }) => (
-				<option key={value} value={value} selected={value === sort}>
-					<Text variant='caption'>{label}</Text>
-				</option>
-			))}
-		</select>
+		<label class='relative' htmlFor='#sort'>
+			<Icon
+				id='ChevronDown'
+				class='-translate-y-1/2 absolute top-1/2 right-2'
+				width={16}
+				height={16}
+				strokeWidth={3}
+			/>
+
+			<select
+				id='sort'
+				class='w-48 p-2 bg-gray-300 text-gray-800 text-xs font-bold uppercase flex justify-center items-center gap-2 appearance-none'
+				name='sort'
+				onInput={applySort}
+			>
+				{options.map(({ value, label }) => (
+					<option key={value} value={value} selected={value === sort}>
+						<p>{label}</p>
+					</option>
+				))}
+			</select>
+		</label>
 	)
 }
 

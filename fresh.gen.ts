@@ -533,6 +533,10 @@ const manifest: DecoManifest = {
 											'type': 'string',
 											'const': 'WishlistHeart',
 										},
+										{
+											'type': 'string',
+											'const': 'FilterPlus',
+										},
 									],
 									'title': 'Icon',
 									'description': 'Image src',

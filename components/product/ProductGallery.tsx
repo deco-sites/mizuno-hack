@@ -20,7 +20,7 @@ function NotFound() {
 function Gallery({ page }: { page: ProductListingPage }) {
 	return (
 		<div class='px-5 lg:max-w-lg lg:mx-auto'>
-			<div class='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4'>
+			<div class='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 sm:gap-6'>
 				{page.products.map((product, index) => (
 					<ProductCard product={product} preload={index === 0} />
 				))}

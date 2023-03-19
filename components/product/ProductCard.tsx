@@ -32,7 +32,7 @@ function ProductCard({ product, preload }: Props) {
 	return (
 		<a
 			id={`product-card-${productID}`}
-			class='w-full px-2.5 py-6'
+			class='w-full px-2.5 py-6 sm:px-0'
 			href={url}
 			aria-label='product link'
 		>

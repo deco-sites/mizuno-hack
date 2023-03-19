@@ -39,6 +39,7 @@ const options: Omit<Options, 'selfURL'> = {
 			colors: {
 				primary: '#001489',
 				secondary: '#009bdb',
+				tertiary: '#051364',
 
 				gray: {
 					100: '#F9F9F8',
