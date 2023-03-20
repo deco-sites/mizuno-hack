@@ -1,7 +1,9 @@
-import ProductShelf, { Props } from '$store/components/product/ProductShelf.tsx'
+import ProductShelf, {
+  Props,
+} from "$store/components/product/ProductShelf.tsx";
 
 function ProductShelfSection(props: Props) {
-	return <ProductShelf {...props} />
+  return <ProductShelf {...props} />;
 }
 
-export default ProductShelfSection
+export default ProductShelfSection;

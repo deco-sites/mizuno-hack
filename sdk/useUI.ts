@@ -3,16 +3,16 @@
  * like clicking on add to cart and the cart modal being displayed
  */
 
-import { signal } from '@preact/signals'
+import { signal } from "@preact/signals";
 
-const displayCart = signal(false)
-const displayMenu = signal(false)
-const displaySearchbar = signal(false)
+const displayCart = signal(false);
+const displayMenu = signal(false);
+const displaySearchbar = signal(false);
 
 const state = {
-	displayCart,
-	displayMenu,
-	displaySearchbar,
-}
+  displayCart,
+  displayMenu,
+  displaySearchbar,
+};
 
-export const useUI = () => state
+export const useUI = () => state;

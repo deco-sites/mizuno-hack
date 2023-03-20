@@ -1,16 +1,16 @@
 export const formatPrice = (
-	price: number | undefined,
-	currency: string,
-	locale = 'pt-BR',
+  price: number | undefined,
+  currency: string,
+  locale = "pt-BR",
 ) => {
-	const formatter = new Intl.NumberFormat(locale, {
-		style: 'currency',
-		currency,
-	})
+  const formatter = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency,
+  });
 
-	if (!price) {
-		return null
-	}
+  if (!price) {
+    return null;
+  }
 
-	return formatter.format(price)
-}
+  return formatter.format(price);
+};
